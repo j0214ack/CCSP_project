@@ -12,7 +12,8 @@ path.lineTo(start + [ 100, 100 ]);
 
 //path.strokeWidth=1;
 
-function resize()
+resize(400,400);
+function resize(width,height)
 {
-
+view.viewSize=new Size(width,height);
 }
