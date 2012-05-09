@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>home</title>
+		<meta name="description" content="" />
+		<meta name="author" content="jack" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	</head>
+
+	<body>
+		<div>
+			<header>
+				<img id="ghost-img">
+				<h1>Snacks！</h1>
+				<input type="search" id="search-lecture">
+				<div id="account-block" class="unlogged">
+					<input type="text" placeholder="Account" class="account-input">
+					<input type="password" placeholder="Password" class="account-input">
+				</div>
+			</header>
+			<nav id="home-side panel">
+				<span class="home-side tag active">Teach</span>
+				<span class="home-side tag inactive">Learn</span>
+				<div class="home-side con" id="home-side-teach">
+					<button id="add-new-lecture"></button>
+					<span>recent given lectures</span>
+					<ul class="lecture-infos">
+						<li>
+							<div class="lecture-info">
+								<div class="lecture-thumb"></div>
+								<span class="lecture-title"></span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="home-side con" id="home-side-learn">
+					<span>recent taken lectures</span>
+					<ul class="lecture-infos">
+						<li>
+							<div class="lecture-info">
+								<div class="lecture-thumb"></div>
+								<span class="lecture-title"></span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="main_con">
+				<ul class="categories">
+					<li class="category">Popular</li>
+					<li class="category">Top rated</li>
+					<li class="category">My favorite</li>
+					<li class="category">Math</li>
+					<li class="category">English</li>
+				</ul>
+				<ul class="thumbs">
+						<li>
+							<div class="lecture-info">
+								<div class="lecture-thumb"></div>
+								<span class="lecture-title"></span>
+							</div>
+						</li>
+				</ul>
+			</div>
+
+			<footer>
+				<p>
+					&copy; Copyright  by ccsp team 6
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>

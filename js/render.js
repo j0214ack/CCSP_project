@@ -26,7 +26,6 @@ $(function(){
 	var sideBoxCon = $("div#sidebox_container");
 		var panelTag = $("div#panel_tag");
 		var panel = $("div#panel");
-			var slideBtn = $("li.slide_button");
 			var recordBtn = $("li.record_button");
 			var slideItems = $("div.slide_items");
 			var recordItems = $("div.record_items");
@@ -51,17 +50,17 @@ $(function(){
 		if (viewPortWHratio<(4/3)){
 			sWidth = wWidth;
 			sHeight = sWidth*3/4;
-			slide.css({"width": sWidth + "px", "height": sHeight + "px"});
+			//slide.css({"width": sWidth + "px", "height": sHeight + "px"});
 		}
 		else {
 			sHeight = wHeight;
 			sWidth = sHeight*4/3;
-			slide.css({"width": sWidth + "px","height" : sHeight + "px"});
+			//slide.css({"width": sWidth + "px","height" : sHeight + "px"});
 		}
 		currentCanvasSize = {widht: sWidth, height: sHeight};
 		toolBoxCon.css({"bottom": -205 + "px"}).removeClass().addClass("hidden");
 		sideBoxCon.css({"right": -245 + "px"}).removeClass().addClass("hidden");
-		slide.css({"margin-left": -sWidth/2 + "px"});
+		//slide.css({"margin-left": -sWidth/2 + "px"});
 		chat.hide();
 		panel.show();
 		if (isInSlidePage){
