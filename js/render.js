@@ -26,6 +26,7 @@ $(function(){
 	var sideBoxCon = $("div#sidebox_container");
 		var panelTag = $("div#panel_tag");
 		var panel = $("div#panel");
+			var slideBtn = $("li.slide_button");
 			var recordBtn = $("li.record_button");
 			var slideItems = $("div.slide_items");
 			var recordItems = $("div.record_items");
