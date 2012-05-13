@@ -43,8 +43,24 @@ nav{
 	border-left: grey solid 2px;
 }
 
-nav #home-side-learn{
-	visibility:hidden;
+nav .home-side.con {
+	margin-top: 10px;
+}
+
+nav .home-side.con.hidden{
+	display: none;
+}
+
+nav span.tag{
+    margin: 10px;
+	margin-right: 20px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+nav span.tag:hover{
+	background-color: grey;
+	color: white;
 }
 
 #main_con, nav{
@@ -55,4 +71,13 @@ nav #home-side-learn{
 
 ul.categories li{
 	display: inline-block;
+	margin-right: 40px;
+	margin-left: 20px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+ul.categories li:hover{
+	background-color: grey;
+	color: white;
 }
