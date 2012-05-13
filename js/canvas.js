@@ -17,6 +17,13 @@ paper.view.draw();
 
 globals.resize = function(width,height){
 	paper.view.viewSize=new paper.Size(width,height);
+	
+	globals.renderStroke();
+
+}
+
+globals.renderStroke = function(){
+
 }
 
 
