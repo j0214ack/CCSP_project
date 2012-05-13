@@ -16,24 +16,32 @@
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link href="css/reset.css" rel="stylesheet" />
+		<link href="css/home.css" rel="stylesheet" />
 	</head>
 
 	<body>
 		<div>
 			<header>
-				<img id="ghost-img">
-				<h1>Snacks！</h1>
+				<div id="main-header">
+					<img id="ghost-img" src="images/ghost.png">
+					<h1>Snacks！</h1>
+				</div>
 				<input type="search" id="search-lecture">
 				<div id="account-block" class="unlogged">
 					<input type="text" placeholder="Account" class="account-input">
 					<input type="password" placeholder="Password" class="account-input">
+					<a href="registration.html"><button id="register">+</button></a>
+					<a href="rescue.html"><button id="rescue">?</button></a>
+					<button id="log-in" type="submit" action="submit">log-in</button>
 				</div>
 			</header>
 			<nav id="home-side panel">
 				<span class="home-side tag active">Teach</span>
 				<span class="home-side tag inactive">Learn</span>
 				<div class="home-side con" id="home-side-teach">
-					<button id="add-new-lecture"></button>
+					<button id="add-new-lecture">+ Add New Class</button>
+					<br/>
 					<span>recent given lectures</span>
 					<ul class="lecture-infos">
 						<li>
@@ -57,7 +65,7 @@
 				</div>
 			</nav>
 
-			<div class="main_con">
+			<div id="main_con">
 				<ul class="categories">
 					<li class="category">Popular</li>
 					<li class="category">Top rated</li>
