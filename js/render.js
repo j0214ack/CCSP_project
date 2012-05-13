@@ -52,16 +52,18 @@ $(function(){
 			sWidth = wWidth;
 			sHeight = sWidth*3/4;
 			//slide.css({"width": sWidth + "px", "height": sHeight + "px"});
+			globals.resize(sWidth,sHeight);
 		}
 		else {
 			sHeight = wHeight;
 			sWidth = sHeight*4/3;
 			//slide.css({"width": sWidth + "px","height" : sHeight + "px"});
+			globals.resize(sWidth,sHeight);
 		}
 		currentCanvasSize = {widht: sWidth, height: sHeight};
 		toolBoxCon.css({"bottom": -205 + "px"}).removeClass().addClass("hidden");
 		sideBoxCon.css({"right": -245 + "px"}).removeClass().addClass("hidden");
-		//slide.css({"margin-left": -sWidth/2 + "px"});
+		slide.css({"margin-left": -sWidth/2 + "px"});
 		chat.hide();
 		panel.show();
 		if (isInSlidePage){
