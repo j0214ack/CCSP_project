@@ -1,3 +1,6 @@
+header{
+	border-bottom: 2px grey solid;
+}
 #main-header{
 	height: 64px;
 	margin: 10px;
@@ -37,6 +40,7 @@ nav{
 	position: absolute;
 	right: 10px;
 	overflow-y: scroll;
+	border-left: grey solid 2px;
 }
 
 nav #home-side-learn{
@@ -44,7 +48,9 @@ nav #home-side-learn{
 }
 
 #main_con, nav{
-	min-height: 400px; 
+	padding-top: 20px;
+	min-height: 500px; 
+	border-bottom: grey 2px solid;
 }
 
 ul.categories li{
