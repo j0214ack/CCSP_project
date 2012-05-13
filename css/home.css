@@ -1,0 +1,52 @@
+#main-header{
+	height: 64px;
+	margin: 10px;
+	display: inline-block;
+}
+header img{
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+}
+header h1{
+	display: inline-block;
+	height: 64px;
+	font-size: 50px;
+}
+
+div#search-bar{
+	display: inline-block;
+}
+
+div#account-block{
+	display: inline-block;
+	float: right;
+	margin: 10px;
+	padding: 15px;
+}
+
+div#account-block input{
+	float: left;
+}
+
+div#account-block button, div#account-block a{
+	float: right;
+}
+
+nav{
+	position: absolute;
+	right: 10px;
+	overflow-y: scroll;
+}
+
+nav #home-side-learn{
+	visibility:hidden;
+}
+
+#main_con, nav{
+	min-height: 400px; 
+}
+
+ul.categories li{
+	display: inline-block;
+}
