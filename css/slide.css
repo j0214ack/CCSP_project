@@ -3,6 +3,10 @@ body,html {
 	overflow: hidden;
 }
 
+button{
+	border-radius: 5px;
+}
+
 .lightbox{
 	position: absolute;
 	overflow: hidden;
