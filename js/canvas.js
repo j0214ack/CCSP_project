@@ -11,7 +11,7 @@ myTool.onMouseDown=function (event) {
 
     // If we produced a path before, deselect it:
     if (path) {
-        path.selected = false;
+        //path.selected = false;
 	pathArray.push(path);
     }
 
@@ -21,7 +21,7 @@ myTool.onMouseDown=function (event) {
     path.strokeColor = 'black';
 	
     // Select the path, so we can see its segment points:
-    path.fullySelected = true;
+    //path.fullySelected = true;
 }
 
 myTool.onMouseDrag=function (event) {
@@ -36,7 +36,7 @@ myTool.onMouseUp=function (event) {
 //alert(path.segments[path.segments.length-1].point.x);
 //alert(event.point.x)
     // Select the path, so we can see its segments:
-    path.fullySelected = true;
+    //path.fullySelected = true;
 
 
     var newSegmentCount = path.segments.length;
