@@ -252,6 +252,11 @@ button#playBtn{
 	background-size: 100% 100%;
 }
 
+button#back-home{
+	background: url(../images/home.png) no-repeat;
+	background-size: 100% 100%;
+}
+
 button#nextBtn{
 	background: url(../images/next.png) no-repeat;
 	background-size: 100% 100%;

@@ -56,10 +56,6 @@ nav .home-side.con {
 	margin-top: 10px;
 }
 
-nav .home-side.con.hidden{
-	display: none;
-}
-
 nav span.tag{
     margin: 10px;
 	margin-right: 20px;
