@@ -65,7 +65,7 @@ globals.renderStroke = function(wRatio,hRatio){
 		var storedPath=pathArray[i];
 		//alert("path.segments.length:"+path.segments.length);
 		for(var j=0;j<storedPath.segments.length;j++)
-		{
+		{	
 			//alert("x:"+wRatio);
 			storedPath.segments[j].point.x*=wRatio;
 			storedPath.segments[j].point.y*=hRatio;
@@ -80,7 +80,7 @@ globals.renderStroke = function(wRatio,hRatio){
 		path.segments[j].point.y*=hRatio;
 			
 	}
-	//paper.view.draw();
+	paper.view.draw();
 }
 
 
