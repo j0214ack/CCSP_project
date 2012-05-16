@@ -18,7 +18,7 @@ button{
 
 canvas#slide{
 	position: absolute;
-	background: no-repeat url("../images/math-symbols.jpg");
+	background: no-repeat url("../images/cse.jpg");
 	background-size: 100% 100%; /*960px;*/
 	max-height: 720px;
 	max-width: 960px;
