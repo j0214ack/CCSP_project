@@ -1,0 +1,13 @@
+<% if @user.errors.any? %>
+	<ul><% @user.errors.full_messages.each do |msg|%>
+			<li><%=msg%></li>
+		<%end%>
+	</ul>
+<%end%>
+        <%= f.label :username, "User Name:" %>
+	<%= f.text_field :username %>
+	<%= f.label :password, "Password:" %>
+	<br></br>
+	<%= f.text_field :password %>
+        <br></br>
+

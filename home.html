@@ -24,12 +24,12 @@
 		<div>
 			<header>
 				<div id="main-header">
-					<img id="ghost-img" src="images/ghost.png">
+					<img id="ghost-img" src="images/pacman.png">
 					<h1>Snacks！</h1>
 				</div>
 				<div id="search-bar">
-					<input type="search" id="search-lecture">
-					<button type="submit">s</button>
+					<input type="search" id="search-lecture" placeholder="Search a lecture...">
+					<button type="submit"></button>
 				</div>
 				<div id="account-block" class="unlogged">
 					<input type="text" placeholder="Account" class="account-input">
@@ -42,10 +42,10 @@
 				</div>
 			</header>
 			<nav id="home-side panel">
-				<span class="home-side tag active">Teach</span>
-				<span class="home-side tag inactive">Learn</span>
-				<div class="home-side con" id="home-side-teach">
-					<button id="add-new-lecture">+ Add New Class</button>
+				<span class="home-side tag active teach">Teach</span>
+				<span class="home-side tag inactive learn">Learn</span>
+				<div class="home-side con active" id="home-side-teach">
+					<a href="slide.html"><button id="add-new-lecture">+ Add New Class</button></a>
 					<br/>
 					<span>recent given lectures</span>
 					<ul class="lecture-infos">
@@ -57,7 +57,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="home-side con hidden" id="home-side-learn">
+				<div class="home-side con" id="home-side-learn">
 					<span>recent taken lectures</span>
 					<ul class="lecture-infos">
 						<li>
@@ -72,27 +72,96 @@
 
 			<div id="main_con">
 				<ul class="categories">
-					<li class="category">Popular</li>
-					<li class="category">Top rated</li>
-					<li class="category">My favorite</li>
-					<li class="category">Math</li>
-					<li class="category">English</li>
+					<li class="category active" id="all">All</li>
+					<li class="category" id="pop">Popular</li>
+					<li class="category" id="top">Top rated</li>
+					<li class="category" id="favorite">My favorite</li>
+					<li class="category" id="math">Math</li>
+					<li class="category" id="english">English</li>
 				</ul>
-				<ul class="thumbs">
-						<li>
-							<div class="lecture-info">
-								<div class="lecture-thumb"></div>
-								<span class="lecture-title"></span>
-							</div>
-						</li>
-				</ul>
+				<div id="thumb_con">
+					<div class="all thumbs active">
+						<ul class="thumbs">
+								<li>
+									<div class="lecture-info">
+										all
+										<div class="lecture-thumb">pic</div>
+										<span class="lecture-title">title</span>
+										<p class="lecture-description">description</p>
+									</div>
+								</li>
+						</ul>
+					</div>
+					<div class="pop thumbs">
+						<ul class="thumbs">
+								<li>
+									<div class="lecture-info">
+										pop
+										<div class="lecture-thumb">pic</div>
+										<span class="lecture-title">title</span>
+										<p class="lecture-description">description</p>
+									</div>
+								</li>
+						</ul>
+					</div>
+					<div class="top thumbs">
+						<ul class="thumbs">
+								<li>
+									<div class="lecture-info">
+										top
+										<div class="lecture-thumb">pic</div>
+										<span class="lecture-title">title</span>
+										<p class="lecture-description">description</p>
+									</div>
+								</li>
+						</ul>
+					</div>
+					<div class="favorite thumbs">
+						<ul class="thumbs">
+								<li>
+									<div class="lecture-info">
+										fav
+										<div class="lecture-thumb">pic</div>
+										<span class="lecture-title">title</span>
+										<p class="lecture-description">description</p>
+									</div>
+								</li>
+						</ul>
+					</div>
+					<div class="math thumbs">
+						<ul class="thumbs">
+								<li>
+									<div class="lecture-info">
+										math
+										<div class="lecture-thumb">pic</div>
+										<span class="lecture-title">title</span>
+										<p class="lecture-description">description</p>
+									</div>
+								</li>
+						</ul>
+					</div>
+					<div class="english thumbs">
+						<ul class="thumbs">
+								<li>
+									eng
+									<div class="lecture-info">
+										<div class="lecture-thumb">pic</div>
+										<span class="lecture-title">title</span>
+										<p class="lecture-description">description</p>
+									</div>
+								</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 
 			<footer>
 				<p>
-					&copy; Copyright  by ccsp team 6
+					&copy; Copyright  by CCSP Team 6
 				</p>
 			</footer>
 		</div>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/home.js"></script>
 	</body>
 </html>

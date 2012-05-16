@@ -1,9 +1,22 @@
+body{
+}
+
+input, button, .tag, div, .category{
+	border-radius: 5px;
+}
+
+h1,h2{
+	color: white;
+}
+
 header{
 	border-bottom: 2px grey solid;
+	background-color: #1D6087;
 }
 #main-header{
 	height: 64px;
 	margin: 10px;
+	color: white;
 	display: inline-block;
 }
 header img{
@@ -18,7 +31,17 @@ header h1{
 }
 
 div#search-bar{
+	background-color: white;
 	display: inline-block;
+	width: 185px;
+	height: 25px;
+}
+
+#search-bar > button{
+	height: 20px;
+	width: 20px;
+	background: url(../images/magnifying_glass.png) no-repeat;
+	background-size: 100%;
 }
 
 div#account-block{
@@ -47,18 +70,20 @@ nav .home-side.con {
 	margin-top: 10px;
 }
 
-nav .home-side.con.hidden{
-	display: none;
-}
-
 nav span.tag{
     margin: 10px;
 	margin-right: 20px;
 	padding: 5px;
 	cursor: pointer;
+	display: inline-block;
 }
 
 nav span.tag:hover{
+	background-color: grey;
+	color: white;
+}
+
+nav span.tag.active{
 	background-color: grey;
 	color: white;
 }
@@ -69,15 +94,28 @@ nav span.tag:hover{
 	border-bottom: grey 2px solid;
 }
 
+#thumb_con{
+}
+
+ul.categories{
+	margin-bottom: 20px;
+}
+
 ul.categories li{
+	color:white;
 	display: inline-block;
 	margin-right: 40px;
 	margin-left: 20px;
 	padding: 5px;
 	cursor: pointer;
+	background-color: #4F81BD;
 }
 
 ul.categories li:hover{
-	background-color: grey;
-	color: white;
+	background-color: #4865B5;
 }
+
+ul.categories li.active{
+	background-color: #D7DB25;
+}
+

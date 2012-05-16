@@ -3,6 +3,10 @@ body,html {
 	overflow: hidden;
 }
 
+button{
+	border-radius: 5px;
+}
+
 .lightbox{
 	position: absolute;
 	overflow: hidden;
@@ -249,6 +253,11 @@ button.flow-controll{
 
 button#playBtn{
 	background: url(../images/record.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+button#back-home{
+	background: url(../images/home.png) no-repeat;
 	background-size: 100% 100%;
 }
 
