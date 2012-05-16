@@ -1,6 +1,6 @@
 <p>User Name: <%= @user.username %></p>
 <p>Password:</p><%= simple_format(@user.password) %>
 
-<p><%= link_to 'back to index', users_path%>
+<p><%= link_to 'back to index', '/user'%>
 </p>
 <%=debug(@user) %>

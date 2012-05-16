@@ -5,25 +5,29 @@ class UserController < ApplicationController
   end
   def new
       @user = Userlist.new
+      render :layout => 'home'
   end
   def create
       @user = Userlist.new(params[:userlist])
-      if @user.save
+      if @user.username == "new"          
+          render :action=>:new
+          flash[:alert] = "This name has been taken."
+      elsif @user.save
 	      redirect_to users_url #action => :index
       else
 	      render :action => :new
       end
-      #flash[:notice] = "User was sucessfully created"
+      
   end
   def show
-      @page_title = @user.username	  
+   
   end
   def edit
   
   end
   def update
     if @user.update_attributes(params[:userlist])
-        redirect_to user_url(@user)  #:action => :show, :id=> @user
+        redirect_to "/user/"+@user.username  #:action => :show, :id=> @user
     else
 	    render :action=> :edit
     end
@@ -35,6 +39,7 @@ class UserController < ApplicationController
   end
   protected 
   def find_user      
-      @user = Userlist.find(params[:id])
+      #raise params[:username].to_s    
+          @user = Userlist.find_by_username(params[:username])
   end
 end

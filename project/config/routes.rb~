@@ -55,14 +55,16 @@ Project::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-  resources :users
+  
   Project::Application.routes.draw do
-    get    '/user'                => "user#index",   :as => "users"
-    post   '/user'                => "user#create",  :as => "users"
-    get    '/user/:id'            => "user#show",    :as => "user"
-    put    '/user/:id'            => "user#update",  :as => "user"
-    delete '/user/:id'            => "user#destroy", :as => "user"
-    get    '/user/new'            => "user#new",     :as => "new_user"
-    get    '/user/:id/edit'       => "user#edit",    :as => "edit_user"
+    get    '/user'                      => "user#index",   :as => "users"
+    post   '/user'                      => "user#create",  :as => "users"
+    get    '/user/new'                  => "user#new",     :as => "new_user"
+    get    '/user/:username'            => "user#show",    :as => "user"
+    put    '/user/:username'            => "user#update",  :as => "user"
+    delete '/user/:username'            => "user#destroy", :as => "user"
+    get    '/user/:username/edit'       => "user#edit",    :as => "edit_user"
   end
+  #resources :user
+  resources :course
 end
