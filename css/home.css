@@ -19,6 +19,15 @@ header h1{
 
 div#search-bar{
 	display: inline-block;
+	width: 185px;
+	height: 25px;
+}
+
+#search-bar > button{
+	height: 20px;
+	width: 20px;
+	background: url(../images/magnifying_glass.png) no-repeat;
+	background-size: 100%;
 }
 
 div#account-block{
@@ -56,9 +65,15 @@ nav span.tag{
 	margin-right: 20px;
 	padding: 5px;
 	cursor: pointer;
+	display: inline-block;
 }
 
 nav span.tag:hover{
+	background-color: grey;
+	color: white;
+}
+
+nav span.tag.active{
 	background-color: grey;
 	color: white;
 }
@@ -81,3 +96,9 @@ ul.categories li:hover{
 	background-color: grey;
 	color: white;
 }
+
+ul.categories li.active{
+	background-color: grey;
+	color: white;
+}
+
