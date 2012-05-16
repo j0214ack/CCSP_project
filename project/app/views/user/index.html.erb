@@ -2,11 +2,11 @@
 
 <% @users.each do |user| %>
 	<li>
-	<%= link_to user.username,user_path(user) %>
-	<%= link_to ' edit',edit_user_path(user)%>
-	<%= button_to ' delete', user_path(user),:method => :delete %>
+	<%= link_to user.username,"/user/"+user.username %>
+	<%= link_to ' edit',"/user/"+user.username+"/edit"%>
+	<%= button_to ' delete', "/user/"+user.username,:method => :delete %>
 </li>
 <%end%>
 </ul>
-<%= link_to 'new user',new_user_path %>
+<%= link_to 'new user','/user/new' %>
 	<!--%= link_to 'new user', :controller => 'user', :action => 'new' %>

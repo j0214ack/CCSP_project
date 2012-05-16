@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
    <header>
       <a href="./home.html">
@@ -21,3 +22,9 @@
       <%end%>
    </div>
 </div>
+=======
+<%= form_for @user, :url => "/user" do |f| %> 
+	<%= render :partial => 'form', :locals => {:f => f} %>
+	<%= f.submit "Create" %>
+<%end%>
+>>>>>>> 80ee58c04c581a714a998f7e0c8c8b206fa06eed
