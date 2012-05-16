@@ -5,6 +5,7 @@ class UserController < ApplicationController
   end
   def new
       @user = Userlist.new
+      render :layout => 'home'
   end
   def create
       @user = Userlist.new(params[:userlist])

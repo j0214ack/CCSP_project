@@ -1,0 +1,274 @@
+body,html {
+	height: 100%;
+	overflow: hidden;
+}
+
+button{
+	border-radius: 5px;
+}
+
+.lightbox{
+	position: absolute;
+	overflow: hidden;
+	background-color: rgba(0,0,0,.75);
+	padding: 10px;
+	height: 100%;
+	width: 100%;
+}
+
+canvas#slide{
+	position: absolute;
+	background: no-repeat url("../images/math-symbols.jpg");
+	background-size: 100% 100%; /*960px;*/
+	max-height: 720px;
+	max-width: 960px;
+	cursor: url("../images/pencil.png") 0 32,auto;
+	left: 50%;
+}
+
+.tag{
+	text-align: center;
+	cursor: pointer;
+	line-height: 25px;
+	height: 35px;
+	width: 100px;
+	/*color: white;*/
+}
+
+.horizontal.tag{
+	height: 35px;
+	width: 100px;
+}
+
+.vertical.tag{
+	height: 35px;
+	width: 100px;
+	position: absolute;
+    left: 0px;
+    -moz-transform: rotate(270deg) translateX(-100%);
+    -moz-transform-origin: 0 0;
+    -webkit-transform: rotate(270deg) translateX(-100%);
+    -webkit-transform-origin: 0 0;
+}
+
+div.block{
+	background-color: #4f81bd;
+	border-radius: 10px;
+}
+
+div#toolbox_container{
+	position: fixed;
+	left: 50px;
+	width: 500px;
+	height: 240px;
+}
+
+div#toolbox_tag{
+	position: relative;
+	left: 45px;
+}
+
+div#toolbox{
+	position: relative;
+	top: -14px;
+	left: 0px;
+	height: 200px;
+	width: 500px;
+}
+
+
+div#sidebox_container{
+	position: fixed;
+	top: 20px;
+	width: 280px;
+	height: 550px;
+}
+
+div#panel_tag{
+	top: 150px;
+}
+
+div#panel{
+	position: absolute;
+	right: 0px;
+	height: 530px;
+	width: 225px;
+	padding: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+div#chat_tag{
+	top: 350px;
+}
+
+div#chat{
+	position: absolute;
+	right: 0px;
+	height: 530px;
+	width: 235px;
+	padding: 10px;
+}
+
+div#chat_content{
+	background-color: white;
+	border: solid 2px black;
+	margin:auto;
+	width: 230px;
+	height: 480px;
+}
+
+hr{
+	background-color: #5e5e5e;
+	border: none;
+	height: 2px;
+}
+
+.panel_menu li{
+	display: inline-block;
+	background-color: #4865b5;
+	padding: 5px;
+	width: auto;
+	height: auto;
+	margin: 3px;
+	margin-top: 3px;
+	margin-bottom: 4px;
+	font-size: 20px;
+}
+
+.panel_menu li.selected{
+	background-color: #659de3;
+	border: solid 2px white;
+}
+
+.panel_menu li.unselected{
+	background-color: #4865b5;
+	border: solid 2px #4865b5;
+}
+
+.panel_menu li:hover{
+	border: solid 2px white;
+}
+
+input#input_line{
+	border: solid 2px black;
+	border-top: 0px;
+	height: 20px;
+	width: 230px;
+}
+
+ul#tools, ul#colors{
+	float: left;
+	padding: 15px;
+	height: 170px;
+	width: 220px;
+}
+
+li{
+	width:25px;
+	height:25px;
+	margin: 15px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#tools li.inactive{
+	background-color: #4865b5;
+	border: solid 2px #4865b5;
+}
+
+#tools li.active{
+	background-color: #659DE3;
+	border: solid 2px white;
+}
+
+#tools li:hover{
+	border: solid 2px white;
+}
+
+li#pencil{
+	background-image: url("../images/pencil.png");
+	background-size: 25px 25px;
+}
+
+li#eraser{
+	background-image: url("../images/eraser.png");
+	background-size: 25px 25px;
+}
+
+li#black{
+	background-color: black;
+}
+
+li#red{
+	background-color: red;
+}
+
+li#blue{
+	background-color: blue;
+}
+
+#colors li.active{
+	border: solid white 2px;
+}
+
+#colors li.inactive{
+	border: solid #4f81bd 2px;
+}
+
+#colors li:hover{
+	border: solid white 2px;
+}
+
+.panel_item{
+	height: 105px;
+	width: 250px;
+}
+
+a.item_thumb{
+	display: block;
+	float: left;
+	/*height: 105px;*/
+	height: auto;
+	width: 140px;
+}
+
+div.item_info{
+	/*height: 105px;*/
+	float: left;
+	height: auto;
+	width: 110px;
+}
+
+div.flow-controll{
+	width: 80px;
+	height: 80px;
+}
+
+button.flow-controll{
+	margin: 4px;
+	width: 32px;
+	height: 32px;
+}
+
+button#playBtn{
+	background: url(../images/record.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+button#back-home{
+	background: url(../images/home.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+button#nextBtn{
+	background: url(../images/next.png) no-repeat;
+	background-size: 100% 100%;
+	float: right;
+}
+
+button#prevBtn{
+	background: url(../images/prev.png) no-repeat;
+	background-size: 100% 100%;
+	float: right;
+}

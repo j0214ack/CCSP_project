@@ -1,4 +1,7 @@
 Project::Application.routes.draw do
+  get "home/index"
+  root :to => 'home#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -57,6 +60,8 @@ Project::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   resources :user
   Project::Application.routes.draw do
+  get "home/index"
+
     get    '/user'                => "user#index",   :as => "users"
     post   '/user'                => "user#create",  :as => "users"
     get    '/user/:id'            => "user#show",    :as => "user"
