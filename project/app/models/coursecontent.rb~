@@ -1,0 +1,3 @@
+class Coursecontent < ActiveRecord::Base
+  attr_accessible :canvassource, :courseid, :recordsource, :slideorder, :slidesource
+end

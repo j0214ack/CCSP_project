@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  courseid: 1
+  slideorder: 1
+  slidesource: MyString
+  recordsource: MyString
+  canvassource: MyString
+
+two:
+  courseid: 1
+  slideorder: 1
+  slidesource: MyString
+  recordsource: MyString
+  canvassource: MyString

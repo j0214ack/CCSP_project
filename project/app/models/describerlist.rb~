@@ -1,0 +1,3 @@
+class Describerlist < ActiveRecord::Base
+  attr_accessible :courseid, :userid
+end

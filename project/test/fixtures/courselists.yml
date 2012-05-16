@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  coursename: MyString
+  author: MyString
+  image: MyString
+  description: MyString
+  ranking: 1.5
+  ispublic: MyString
+
+two:
+  coursename: MyString
+  author: MyString
+  image: MyString
+  description: MyString
+  ranking: 1.5
+  ispublic: MyString
