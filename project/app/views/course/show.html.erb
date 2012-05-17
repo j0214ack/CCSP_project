@@ -1,0 +1,6 @@
+<p>Course Name: <%= @course.name %></p>
+<p>Password:</p><%= simple_format(@user.password) %>
+
+<p><%= link_to 'back to index', '/user'%>
+</p>
+<%=debug(@user) %>

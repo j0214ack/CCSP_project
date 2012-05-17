@@ -1,8 +1,9 @@
 <h1>File Upload</h1>
-<%= start_form_tag ({:action => 'uploadFile'}, 
-                        :multipart => true) %>
+<%= form_tag({:action => 'upload'}, :multipart => true) %>
 <p><label for="upload_file">Select File</label> : 
-<%= file_field 'upload', 'datafile' %></p>
+<%= file_field 'course', 'coursecontent' %></p>
 <%= submit_tag "Upload" %>
-<%= end_form_tag %>
+<br></br>
+<%= button_to ' delete', "/course",:method => :delete %>
+
 

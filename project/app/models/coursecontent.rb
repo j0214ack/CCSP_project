@@ -5,12 +5,16 @@ class Coursecontent < ActiveRecord::Base
   validates :slidesource, :presence => true
   belongs_to :courselist
   def self.save(upload)
-	name = upload['datafile'].original_filename
-        directory = "app/assets/data"
+	name = upload['coursecontent'].original_filename
+        directory = "#{Rails.root}/public/data"
 	#create the file path
 	path = File.join(directory,name)
         #write the file
-	File.open(path,"wb") {|f| f.write(upload['datafile'].read)}	
+	File.open(path, "w+") {|f| f.write(upload['coursecontent'].read)}	
   end
-end
-
+  def self.cleanup
+    File.delete("#{Rails.root}/public/data/#{@filename}") 
+    #File.exist?("#{RAILS_ROOT}/public/data/#{@filename}")
+  end
+  
+end 

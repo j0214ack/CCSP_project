@@ -64,6 +64,9 @@ Project::Application.routes.draw do
     put    '/user/:username'            => "user#update",  :as => "user"
     delete '/user/:username'            => "user#destroy", :as => "user"
     get    '/user/:username/edit'       => "user#edit",    :as => "edit_user"
+    get    '/course'                    => "course#index", :as => "courses"
+    post   '/course'                    => "course#upload",:as => "courses"
+    delete '/course'                    => "course#destroy",:as => "course"
   end
   #resources :user
   resources :course
