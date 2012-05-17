@@ -18,9 +18,15 @@ myTool.onMouseDown=function (event) {
     // Create a new path and set its stroke color to black:
     path = new paper.Path();
     path.add(event.point);
-    path.strokeColor = 'black';
-	
+    if(currentTool.color==="black")
+    	path.strokeColor = 'black';
+    else if(currentTool.color==="red")
+       	path.strokeColor = 'red';
+    else if(currentTool.color==="blue")
+       	path.strokeColor = 'blue';
+
     // Select the path, so we can see its segment points:
+    
     //path.fullySelected = true;
 }
 

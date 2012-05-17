@@ -1,4 +1,23 @@
-<%= form_for @user, :url => "/user" do |f| %> 
-	<%= render :partial => 'form', :locals => {:f => f} %>
-	<%= f.submit "Create" %>
-<%end%>
+<div>
+   <header>
+      <a href="./home.html">
+         <div id="main-header">
+            <img id="ghost-img" src="/assets/pacman.png">
+            <h1>Snacks！</h1>
+         </div>
+      </a>
+      <h1> Registration</h1>
+   </header>
+   <div>
+      <%= form_for @user, :url => "/user"  do |f| %> 
+         <%= f.label :username, "User Name:" %>
+         <%= f.text_field :username %>
+         </br>
+         <%= f.label :password, "Password:" %>
+         <%= f.password_field :password %>
+         </br>
+         <%= f.submit "Create" %>
+         </br>
+      <%end%>
+   </div>
+</div>
