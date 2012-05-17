@@ -11,9 +11,8 @@ class UserController < ApplicationController
       @user = Userlist.new(params[:userlist])
       if @user.username == "new"          
           render :action=>:new
-          flash[:alert] = "This name has been taken."
       elsif @user.save
-	      redirect_to users_url #action => :index
+	      redirect_to '/'#users_url #action => :index
       else
 	      render :action => :new
       end

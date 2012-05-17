@@ -60,17 +60,7 @@ Project::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   
   Project::Application.routes.draw do
-<<<<<<< HEAD
   get "home/index"
-
-    get    '/user'                => "user#index",   :as => "users"
-    post   '/user'                => "user#create",  :as => "users"
-    get    '/user/:id'            => "user#show",    :as => "user"
-    put    '/user/:id'            => "user#update",  :as => "user"
-    delete '/user/:id'            => "user#destroy", :as => "user"
-    get    '/user/new'            => "user#new",     :as => "new_user"
-    get    '/user/:id/edit'       => "user#edit",    :as => "edit_user"
-=======
     get    '/user'                      => "user#index",   :as => "users"
     post   '/user'                      => "user#create",  :as => "users"
     get    '/user/new'                  => "user#new",     :as => "new_user"
@@ -78,7 +68,6 @@ Project::Application.routes.draw do
     put    '/user/:username'            => "user#update",  :as => "user"
     delete '/user/:username'            => "user#destroy", :as => "user"
     get    '/user/:username/edit'       => "user#edit",    :as => "edit_user"
->>>>>>> 80ee58c04c581a714a998f7e0c8c8b206fa06eed
   end
   #resources :user
   resources :course
