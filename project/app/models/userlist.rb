@@ -3,5 +3,5 @@ class Userlist < ActiveRecord::Base
   validates :username, :uniqueness=>true, :presence=>true
   validates :password, :presence=>true
   has_many :describerlists
-  has_many :courselists, :through=>:describerlists, :uniq=>true
+  has_many :courselists, :through=>:describelists, :uniq=>true
 end
