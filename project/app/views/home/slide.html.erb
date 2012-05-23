@@ -1,0 +1,77 @@
+		<canvas id="slide"></canvas>
+		<div class="flow-controll">
+         <%= link_to :action => 'index' do %>
+			<button class="flow-controll" id="back-home"></button> 
+         <% end %>
+			<button class="flow-controll" id="playBtn"></button>
+			<button class="flow-controll" id="nextBtn"></button>
+			<button class="flow-controll" id="prevBtn"></button>
+		</div>
+		<div id="toolbox_container" class="hidden">
+			<div class="horizontal tag block" id="toolbox_tag" >ToolBox</div>
+			<div class="block" id="toolbox">
+				<ul class="block" id="tools">
+					<span>Tools</span>
+					<li class="active" id="pencil"></li>
+					<li class="inactive" id="eraser"></li>
+				</ul>
+				<ul class="block" id="colors">
+					<span>Colors</span>
+					<li class="active" id="black"></li>
+					<li class="inactive" id="red"></li>
+					<li class="inactive" id="blue"></li>
+				</ul>
+			</div>
+		</div>
+		<div id="sidebox_container" class="hidden">
+			<div class="vertical tag block" id="panel_tag">Slides Panel</div>
+			<div class="block" id="panel">
+				<ul class="panel_menu">
+					<li class="selected slide_button">slide</li>
+					<li class="unselected record_button">record</li>
+				</ul>
+				<hr/>
+				<div id="panel_content">
+					<div class="record_items">
+						<div class="panel_item record_item">
+							<div class="item_info">
+								<h3 class="title">slide 1</h3>
+								<span class="record_time">0:33</span>
+							</div>
+							<a class="item_thumb">thumbnail</a>
+						</div>
+					</div>
+					<div class="slide_items">
+						<div class="panel_item slide_item">
+							<div class="item_info">
+								<h3 class="title">slide 1</h3>
+							</div>
+							<a class="item_thumb">thumbnail</a>
+						</div>
+						<div class="panel_item slide_item">
+							<div class="item_info">
+								<h3 class="title">slide 2</h3>
+							</div>
+							<a class="item_thumb">thumbnail</a>
+						</div>
+						<div class="panel_item slide_item">
+							<div class="item_info">
+								<h3 class="title">slide 3</h3>
+							</div>
+							<a class="item_thumb">thumbnail</a>
+						</div>
+						<div class="panel_item slide_item">
+							<div class="item_info">
+								<h3 class="title">slide 4</h3>
+							</div>
+							<a class="item_thumb">thumbnail</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="vertical tag block" id="chat_tag">Chat Room</div>
+			<div class="block" id="chat">
+				<div id="chat_content"></div>
+				<input type="text" id="input_line">
+			</div>
+		</div>

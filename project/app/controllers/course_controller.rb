@@ -7,11 +7,13 @@ class CourseController < ApplicationController
   def upload  
       #raise params[:course].	  
          post = Coursecontent.save(params[:course])
-  	 render :action=>:index
-         flash[:notice] = "File has been uploaded successfully"
+      redirect_to :controller => 'home', :action => 'slide'
+  	 #render :action=>:index
+    #     flash[:notice] = "File has been uploaded successfully"
   end
   def show
-      	  
+     redirect_to :controller => 'home', :action => 'slide'
+     #@course = Coursecontent.find(params[:id])
   end
   def edit
   end

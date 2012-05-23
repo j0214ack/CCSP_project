@@ -151,11 +151,11 @@ $(function(){
 	}
 	
 	var startRecord = function(){
-		playBtn.css("background-image","url(./images/pause.png)");
+		playBtn.css("background-image","url(/assets/pause.png)");
 	}
 	
 	var pauseRecord = function(){
-		playBtn.css("background-image","url(./images/record.png)");
+		playBtn.css("background-image","url(/assets/record.png)");
 	}
 	
 	tools.click(function(){
@@ -164,7 +164,7 @@ $(function(){
 			activeTool.removeClass("active").addClass("inactive");
 			activeTool = $(this);
 			currentTool.type = $(this).attr("id");
-			slide.css({"cursor": "url(./images/" + currentTool.type + ".png) 0 32, auto"});
+			slide.css({"cursor": "url(/assets/" + currentTool.type + ".png) 0 32, auto"});
 			//console.log(currentTool);
 		}
 	});

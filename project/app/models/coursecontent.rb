@@ -10,7 +10,7 @@ class Coursecontent < ActiveRecord::Base
 	#create the file path
 	path = File.join(directory,name)
         #write the file
-	File.open(path, "w+") {|f| f.write(upload['coursecontent'].read)}	
+	File.open(path, "wb+") {|f| f.write(upload['coursecontent'].read)}	
   end
   def self.cleanup
     File.delete("#{Rails.root}/public/data/#{@filename}") 
