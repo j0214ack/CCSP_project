@@ -7,13 +7,11 @@ class CourseController < ApplicationController
   def upload  
       #raise params[:course].	  
          post = Coursecontent.save(params[:course])
-      redirect_to :controller => 'home', :action => 'slide'
-  	 #render :action=>:index
-    #     flash[:notice] = "File has been uploaded successfully"
+  	 render :action=>:index
+         flash[:notice] = "File has been uploaded successfully"
   end
   def show
-     redirect_to :controller => 'home', :action => 'slide'
-     #@course = Coursecontent.find(params[:id])
+      	  
   end
   def edit
   end
@@ -23,6 +21,13 @@ class CourseController < ApplicationController
          #delete = Coursecontent.cleanup
 	 #render :action=>:index
          #flash[:notice] = "File has been deleted successfully"
+  end
+  def recordpage
+      @course=Coursecontent.all
+  end
+  def record
+      post = Coursecontent.save(params[:course])
+      render :action=>:recordpage
   end
   protected
   def find_course

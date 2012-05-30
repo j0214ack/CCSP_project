@@ -18,9 +18,16 @@ class CourseController < ApplicationController
   def update
   end
   def destroy
-         delete = Coursecontent.cleanup
-	 render :action=>:index
-         flash[:notice] = "File has been deleted successfully"
+         #delete = Coursecontent.cleanup
+	 #render :action=>:index
+         #flash[:notice] = "File has been deleted successfully"
+  end
+  def recordpage
+      @course=Coursecontent.all
+  end
+  def record
+      post = Coursecontent.save(params[:course])
+      render :action=>:recordpage
   end
   protected
   def find_course

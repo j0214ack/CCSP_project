@@ -18,13 +18,11 @@ button{
 
 canvas#slide{
 	position: absolute;
-	/*background: no-repeat url("../images/particles.jpg");*/
-	background: no-repeat url("/assets/particles.jpg");
+	background: no-repeat url("../images/math-symbols.jpg");
 	background-size: 100% 100%; /*960px;*/
 	max-height: 720px;
 	max-width: 960px;
-	/*cursor: url("../images/pencil.png") 0 32,auto;*/
-	cursor: url("/assets/pencil.png") 0 32,auto;
+	cursor: url("../images/pencil.png") 0 32,auto;
 	left: 50%;
 }
 
@@ -189,12 +187,12 @@ li{
 }
 
 li#pencil{
-	background-image: url("/assets/pencil.png");
+	background-image: url("../images/pencil.png");
 	background-size: 25px 25px;
 }
 
 li#eraser{
-	background-image: url("/assets/eraser.png");
+	background-image: url("../images/eraser.png");
 	background-size: 25px 25px;
 }
 
@@ -254,23 +252,23 @@ button.flow-controll{
 }
 
 button#playBtn{
-	background: url(/assets/record.png) no-repeat;
+	background: url(../images/record.png) no-repeat;
 	background-size: 100% 100%;
 }
 
 button#back-home{
-	background: url(/assets/home.png) no-repeat;
+	background: url(../images/home.png) no-repeat;
 	background-size: 100% 100%;
 }
 
 button#nextBtn{
-	background: url(/assets/next.png) no-repeat;
+	background: url(../images/next.png) no-repeat;
 	background-size: 100% 100%;
 	float: right;
 }
 
 button#prevBtn{
-	background: url(/assets/prev.png) no-repeat;
+	background: url(../images/prev.png) no-repeat;
 	background-size: 100% 100%;
 	float: right;
 }
