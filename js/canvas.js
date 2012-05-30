@@ -44,9 +44,11 @@ else{// eraser
     paper.project.activeLayer.selected = false;
     if(toDelete)
     {
-    	toDelete.selected=false;
-    	toDelete.remove();
-    	toDelete=null;
+	    if(hitResult&& hitResult.item && toDelete==hitResult.item){
+	    	toDelete.selected=false;
+	    	toDelete.remove();
+	    }
+	    	toDelete=null;
     }
     else if (hitResult && hitResult.item)
     {
@@ -83,11 +85,11 @@ if(currentTool.type=="pencil"){
    //alert(event.point.x)
        // Select the path, so we can see its segments:
        //path.fullySelected = true;
+       alert(path.segments);
 
-
-       var newSegmentCount = path.segments.length;
-       var difference = segmentCount - newSegmentCount;
-       var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
+//       var newSegmentCount = path.segments.length;
+  //     var difference = segmentCount - newSegmentCount;
+    //   var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
 
 }
 else{
