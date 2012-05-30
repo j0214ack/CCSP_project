@@ -42,8 +42,13 @@ if(currentTool.type=="pencil"){
 else{// eraser
     var hitResult = paper.project.hitTest(event.point, hitOptions);
     paper.project.activeLayer.selected = false;
-//    toDelete.selected=false;
-    if (hitResult && hitResult.item)
+    if(toDelete)
+    {
+    	toDelete.selected=false;
+    	toDelete.remove();
+    	toDelete=null;
+    }
+    else if (hitResult && hitResult.item)
     {
         hitResult.item.selected = true;
 	toDelete=hitResult.item;
