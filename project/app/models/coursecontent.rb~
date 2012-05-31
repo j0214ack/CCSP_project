@@ -10,11 +10,17 @@ class Coursecontent < ActiveRecord::Base
 	#create the file path
 	path = File.join(directory,name)
         #write the file
-	File.open(path, "w+") {|f| f.write(upload['coursecontent'].read)}	
+	File.open(path, "wb+") {|f| f.write(upload['coursecontent'].read) 
+        f.close()}	
+  end
+  def self.get(name)
+        f = File.open(name)
+	self.send_response(200)
+	self.send_header('content-type','audio/x-wav')
   end
   def self.cleanup
     File.delete("#{Rails.root}/public/data/#{@filename}") 
-    File.exist?("#{RAILS_ROOT}/public/data/#{@filename}")
+    #File.exist?("#{RAILS_ROOT}/public/data/#{@filename}")
   end
   
 end 

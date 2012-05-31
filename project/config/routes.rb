@@ -71,6 +71,9 @@ Project::Application.routes.draw do
     get    '/course'                    => "course#index", :as => "courses"
     post   '/course'                    => "course#upload",:as => "courses"
     delete '/course'                    => "course#destroy",:as => "course"
+    get    '/record'                    => "course#recordpage",:as=>"course"
+    post   '/record'                    => "course#record", :as => "course"
+
   end
   #resources :user
   resources :course

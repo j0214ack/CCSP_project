@@ -1,0 +1,57 @@
+<script type="text/javascript"
+  src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js">
+</script>
+
+<div class="speech-new-answer-pane">
+
+  <div id="wami"></div>
+
+  <div id="speech-new-answer-first">
+    <h2>1. This is the flash setting page if not remembered</h2>
+    <div id="flash-setting-pane"></div>
+    <div id="speech-new-answer-status">
+      <h2>Click on allow and remember</h2>
+    </div>
+  </div>
+
+  <div id="speech-new-answer-second">
+    <h2>2. This is the start button and microphone test page</h2>
+    <div id="speech-new-answer-status">
+      <h2>Ready for your question? Start Now!</h2>
+    </div>
+    <div class="button" id="new-answer-btn"><%= link_to "Answer" %></div>
+  </div>
+
+  <div id="speech-new-answer-third">
+    <div class="speech-new-answer-question">
+      <h2>3. Question</h2>
+      <!--= image_tag user_avatar_url(User.first) -->
+    </div>
+    <div class="speech-new-answer-status">
+      <h2>Recording will strat in
+      <span class="speech-new-read-timer" value='15'>15</span>
+      seconds.</h2>
+    </div>
+  </div>
+
+  <div id="speech-new-answer-fourth">
+    <div class="speech-new-answer-evaluators">
+      <h2>4. Evaluators</h2>
+       <!--= image_tag user_avatar_url(User.first) -->
+      <!--= image_tag user_avatar_url(User.last) -->
+       <!--= image_tag user_avatar_url(User.first) -->
+      <!--%= image_tag user_avatar_url(User.last) %-->
+       <!--= image_tag user_avatar_url(User.first) -->
+    </div>
+    <div class="speech-new-answer-status">
+      <div class="button" id="answer-done-btn"><%= link_to "Done" %></div>
+      <h2>Voice detection level here</h2>
+      <span class="speech-new-record-timer" value='140'>140</span>
+    </div>
+  </div>
+
+  <div id="speech-new-answer-fifth">
+    <h2>5. Uploading</h2>
+  </div>
+</div>
+
