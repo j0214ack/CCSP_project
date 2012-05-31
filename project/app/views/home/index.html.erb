@@ -3,12 +3,17 @@
       <span class="home-side tag active teach">Teach</span>
       <span class="home-side tag inactive learn">Learn</span>
       <div class="home-side con active" id="home-side-teach">
-<%= form_tag({:controller => 'course', :action => 'upload'}, :multipart => true) %>
-<label for="upload_file">New Course</label> : 
-</br>
-<%= file_field 'course', 'coursecontent' %>
-</br>
-<%= submit_tag "+ Add" %>
+         <% if session[:user] %>
+         <%= form_tag({:controller => 'course', :action => 'upload'}, :multipart => true) %>
+         <label for="upload_file">New Course</label> : 
+         </br>
+         <%= file_field 'course', 'coursecontent' %>
+         </br>
+         <%= submit_tag "+ Add" %>
+         <br/>
+         <% else %>
+         <p>Login in to Add Class</p>
+         <% end %>
          <br/>
          <span>recent given lectures</span>
          <ul class="lecture-infos">

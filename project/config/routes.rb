@@ -57,6 +57,8 @@ Project::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   root :to => 'home#index'
   match '/home/slide' => 'home#slide'
+  match '/user/login' => 'user#login', :via => 'post'
+  match '/logout' => 'user#logout'
   
   Project::Application.routes.draw do
     get    '/user'                      => "user#index",   :as => "users"

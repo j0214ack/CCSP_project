@@ -29,7 +29,13 @@
          <input type="search" id="search-lecture" placeholder="Search a lecture...">
          <button type="submit"></button>
       </div>
-      <div id="account-block" class="unlogged">
+      <% if session[:user] == nil %>
+      <div id="account-block" class="account-block unlogged">
+         <%= form_tag(:controller => 'user', :action => 'login') %>
+         <%= text_field 'user', 'username', :class => "account-input", :placeholder => "Account" %>
+         <%= password_field 'user', 'password' , :class => "account-input", :placeholder => "Password" %>
+         <%= submit_tag "log-in" %>
+         <!--
          <input type="text" placeholder="Account" class="account-input">
          <input type="password" placeholder="Password" class="account-input">
          <div id="account-helper">
@@ -39,7 +45,18 @@
             <a href="rescue.html"><button id="rescue">?</button></a>
          </div>
          <button id="log-in" type="submit" action="submit">log-in</button>
+         -->
       </div>
+      <% else %>
+      <div id="account-block" class="account-block logged">
+         <span>
+         <%= "Hello, #{session[:user].username}!" %>
+         </span>
+         <%= link_to '/logout' do%>
+            <button id="logout">logout</button>
+         <% end %>
+      </div>
+      <% end %>
    </header>
    <%= yield %>
 	</body>
