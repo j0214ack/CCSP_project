@@ -1,4 +1,8 @@
 Project::Application.routes.draw do
+  get "message/index"
+
+  get "message/create"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -61,6 +65,10 @@ Project::Application.routes.draw do
   match '/logout' => 'user#logout'
   
   Project::Application.routes.draw do
+  get "message/index"
+
+  get "message/create"
+
     get    '/user'                      => "user#index",   :as => "users"
     post   '/user'                      => "user#create",  :as => "users"
     get    '/user/new'                  => "user#new",     :as => "new_user"
@@ -76,5 +84,6 @@ Project::Application.routes.draw do
 
   end
   #resources :user
-  resources :course
+  resources :courses
+  resources :messages
 end

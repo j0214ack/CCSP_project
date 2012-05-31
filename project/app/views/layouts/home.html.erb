@@ -34,7 +34,13 @@
          <%= form_tag(:controller => 'user', :action => 'login') %>
          <%= text_field 'user', 'username', :class => "account-input", :placeholder => "Account" %>
          <%= password_field 'user', 'password' , :class => "account-input", :placeholder => "Password" %>
-         <%= submit_tag "log-in" %>
+         <%= button_tag "log-in", :id => 'log-in'%>
+         <div id="account-helper">
+            <%= link_to new_user_path do%>
+               <button id="register">+</button>
+            <% end %>
+            <a href="rescue.html"><button id="rescue">?</button></a>
+         </div>
          <!--
          <input type="text" placeholder="Account" class="account-input">
          <input type="password" placeholder="Password" class="account-input">

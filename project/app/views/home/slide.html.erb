@@ -71,7 +71,13 @@
 			</div>
 			<div class="vertical tag block" id="chat_tag">Chat Room</div>
 			<div class="block" id="chat">
-				<div id="chat_content"></div>
-				<input type="text" id="input_line">
+				<div id="chat_content">
+               <%= render @messages %>
+            </div>
+            <%= form_for Message.new, :remote => true do |f| %>
+            <%= f.text_field :content, :id => 'input_line' %>
+            <%= f.hidden_field :form, :value => session[:user].username %>
+            <%= f.submit "Send" %>
+            <% end %>
 			</div>
 		</div>

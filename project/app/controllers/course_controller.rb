@@ -7,8 +7,8 @@ class CourseController < ApplicationController
   def upload  
       #raise params[:course].	  
          post = Coursecontent.save(params[:course])
-  	 render :action=>:index
          flash[:notice] = "File has been uploaded successfully"
+         redirect_to 'home/slide'
   end
   def show
       	  
