@@ -55,7 +55,7 @@ Project::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
- resources :sessions, :constraints => { :protocol => "https" } 
+  
   Project::Application.routes.draw do
     get    '/user'                      => "user#index",   :as => "users"
     post   '/user'                      => "user#create",  :as => "users"
@@ -69,7 +69,7 @@ Project::Application.routes.draw do
     delete '/course'                    => "course#destroy",:as => "course"
     get    '/record'                    => "course#recordpage",:as=>"course"
     post   '/record'                    => "course#record", :as => "course"
-    #get    '/crossdomain.xml'           => "course#crossdomain", :as => "course" 
+
   end
   #resources :user
   resources :course

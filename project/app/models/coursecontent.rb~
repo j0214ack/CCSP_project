@@ -14,9 +14,13 @@ class Coursecontent < ActiveRecord::Base
         f.close()}	
   end
   def self.get(name)
-        f = File.open(name)
+        
 	self.send_response(200)
 	self.send_header('content-type','audio/x-wav')
+	self.end_headers()
+	f = File.open(name)
+
+
   end
   def self.cleanup
     File.delete("#{Rails.root}/public/data/#{@filename}") 

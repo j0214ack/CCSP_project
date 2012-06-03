@@ -1,6 +1,128 @@
-<p>User Name: <%= @user.username %></p>
-<p>Password:</p><%= simple_format(@user.password) %>
+<div>
+   <nav id="home-side panel">
+      <span class="home-side tag active teach">Teach</span>
+      <span class="home-side tag inactive learn">Learn</span>
+      <div class="home-side con active" id="home-side-teach">
+         <%= form_tag({:controller => 'course', :action => 'upload'}, :multipart => true) %>
+         <label for="upload_file">New Course</label> : 
+         </br>
+         <%= file_field 'course', 'coursecontent' %>
+         </br>
+         <%= submit_tag "+ Add" %>
+         <br/>
+         <span>recent given lectures</span>
+         <ul class="lecture-infos">
+            <li>
+               <div class="lecture-info">
+                  <div class="lecture-thumb"></div>
+                  <span class="lecture-title"></span>
+               </div>
+            </li>
+         </ul>
+      </div>
+      <div class="home-side con" id="home-side-learn">
+         <span>recent taken lectures</span>
+         <ul class="lecture-infos">
+            <li>
+               <div class="lecture-info">
+                  <div class="lecture-thumb"></div>
+                  <span class="lecture-title"></span>
+               </div>
+            </li>
+         </ul>
+      </div>
+   </nav>
 
-<p><%= link_to 'back to index', '/user'%>
-</p>
-<%=debug(@user) %>
+   <div id="main_con">
+      <ul class="categories">
+         <li class="category active" id="all">All</li>
+         <li class="category" id="pop">Popular</li>
+         <li class="category" id="top">Top rated</li>
+         <li class="category" id="favorite">My favorite</li>
+         <li class="category" id="math">Math</li>
+         <li class="category" id="english">English</li>
+      </ul>
+      <div id="thumb_con">
+         <div class="all thumbs active">
+            <ul class="thumbs">
+                  <li>
+                     <div class="lecture-info">
+                        all
+                        <div class="lecture-thumb">pic</div>
+                        <span class="lecture-title">title</span>
+                        <p class="lecture-description">description</p>
+                     </div>
+                  </li>
+            </ul>
+         </div>
+         <div class="pop thumbs">
+            <ul class="thumbs">
+                  <li>
+                     <div class="lecture-info">
+                        pop
+                        <div class="lecture-thumb">pic</div>
+                        <span class="lecture-title">title</span>
+                        <p class="lecture-description">description</p>
+                     </div>
+                  </li>
+            </ul>
+         </div>
+         <div class="top thumbs">
+            <ul class="thumbs">
+                  <li>
+                     <div class="lecture-info">
+                        top
+                        <div class="lecture-thumb">pic</div>
+                        <span class="lecture-title">title</span>
+                        <p class="lecture-description">description</p>
+                     </div>
+                  </li>
+            </ul>
+         </div>
+         <div class="favorite thumbs">
+            <ul class="thumbs">
+                  <li>
+                     <div class="lecture-info">
+                        fav
+                        <div class="lecture-thumb">pic</div>
+                        <span class="lecture-title">title</span>
+                        <p class="lecture-description">description</p>
+                     </div>
+                  </li>
+            </ul>
+         </div>
+         <div class="math thumbs">
+            <ul class="thumbs">
+                  <li>
+                     <div class="lecture-info">
+                        math
+                        <div class="lecture-thumb">pic</div>
+                        <span class="lecture-title">title</span>
+                        <p class="lecture-description">description</p>
+                     </div>
+                  </li>
+            </ul>
+         </div>
+         <div class="english thumbs">
+            <ul class="thumbs">
+                  <li>
+                     eng
+                     <div class="lecture-info">
+                        <div class="lecture-thumb">pic</div>
+                        <span class="lecture-title">title</span>
+                        <p class="lecture-description">description</p>
+                     </div>
+                  </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+   <footer>
+      <p>
+         &copy; Copyright  by CCSP Team 6
+      </p>
+   </footer>
+</div>
+<%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "home" %>

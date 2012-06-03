@@ -76,7 +76,7 @@
             </div>
             <%= form_for Message.new, :remote => true do |f| %>
             <%= f.text_field :content, :id => 'input_line' %>
-            <%= f.hidden_field :form, :value => session[:user].username %>
+            <%= f.hidden_field :from, :value => session[:user].username %>
             <%= f.submit "Send" %>
             <% end %>
 			</div>
