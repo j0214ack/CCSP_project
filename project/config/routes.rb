@@ -1,11 +1,8 @@
 Project::Application.routes.draw do
-<<<<<<< HEAD
   get "messages/index"
 
   get "messages/create"
 
-=======
->>>>>>> d87593cec2050b49cb9b3e466146d0d495943808
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -64,14 +61,11 @@ Project::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
  #resources :sessions, :constraints => { :protocol => "https" } 
   Project::Application.routes.draw do
-<<<<<<< HEAD
 
   get "messages/index"
 
   get "messages/create"
 
-=======
->>>>>>> d87593cec2050b49cb9b3e466146d0d495943808
     get    '/user'                      => "user#index",   :as => "users"
     post   '/user'                      => "user#create",  :as => "users"
     get    '/user/new'                  => "user#new",     :as => "new_user"
@@ -88,8 +82,5 @@ Project::Application.routes.draw do
   end
   #resources :user
   resources :course
-<<<<<<< HEAD
   resources :messages
-=======
->>>>>>> d87593cec2050b49cb9b3e466146d0d495943808
 end
