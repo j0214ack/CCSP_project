@@ -11,14 +11,15 @@
 		<!--meta name="viewport" content="width=device-width; initial-scale=1.0" /-->
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
   <%= javascript_include_tag "jquery.min" %>
+  <%= javascript_include_tag "jquery_ujs" %>
   <%= javascript_include_tag "jquery.tools.min" %>
   <%= javascript_include_tag "gui" %>
   <%= javascript_include_tag "recorder" %>
   <%= javascript_include_tag "application" %>
   <!--embed type="application/x-shockwave-flash" src="/assets/Wami.swf" width="214" height="137" id="wid0ccc2047456" style="visibility: visible; "><param name="allowScriptAccess" value="always"><param name="wmode" value="transparent"><param name="flashvars" value="visible=false&amp;loadedCallback=Wami._callbacks['wid5484e8ed5e7']&amp;console=true"></embed-->
-  <%=image_path('/assets/swfs/Wami.swf')%>
+  <!--%=image_path('/assets/swfs/Wami.swf')%-->
   <%= csrf_meta_tags %>
-  <script>flashembed("flash", "/assets/Wami.swf");</script>
+  <!--script>flashembed("flash", "/assets/Wami.swf");</script-->
 	</head>
 	<body>
       <%= yield %>

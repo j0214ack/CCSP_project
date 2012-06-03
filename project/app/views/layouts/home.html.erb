@@ -18,52 +18,6 @@
   <%= stylesheet_link_tag    "home"%>
   <%= csrf_meta_tags %>
 	<body>
-   <header>
-      <div id="main-header">
-         <%= link_to '/' do %>
-         <%= image_tag "pacman.png", {:id=>"ghost-img"}%>
-         <h1>Snacks！</h1>
-         <% end %>
-      </div>
-      <div id="search-bar">
-         <input type="search" id="search-lecture" placeholder="Search a lecture...">
-         <button type="submit"></button>
-      </div>
-      <% if session[:user] == nil %>
-      <div id="account-block" class="account-block unlogged">
-         <%= form_tag(:controller => 'user', :action => 'login') %>
-         <%= text_field 'user', 'username', :class => "account-input", :placeholder => "Account" %>
-         <%= password_field 'user', 'password' , :class => "account-input", :placeholder => "Password" %>
-         <%= button_tag "log-in", :id => 'log-in'%>
-         <div id="account-helper">
-            <%= link_to new_user_path do%>
-               <button id="register">+</button>
-            <% end %>
-            <a href="rescue.html"><button id="rescue">?</button></a>
-         </div>
-         <!--
-         <input type="text" placeholder="Account" class="account-input">
-         <input type="password" placeholder="Password" class="account-input">
-         <div id="account-helper">
-            <%= link_to new_user_path do%>
-               <button id="register">+</button>
-            <% end %>
-            <a href="rescue.html"><button id="rescue">?</button></a>
-         </div>
-         <button id="log-in" type="submit" action="submit">log-in</button>
-         -->
-      </div>
-      <% else %>
-      <div id="account-block" class="account-block logged">
-         <span>
-         <%= "Hello, #{session[:user].username}!" %>
-         </span>
-         <%= link_to '/logout' do%>
-            <button id="logout">logout</button>
-         <% end %>
-      </div>
-      <% end %>
-   </header>
    <%= yield %>
 	</body>
 </html>
