@@ -39,7 +39,6 @@ class CourseController < ApplicationController
   def download
      send_file 
   end
-
   protected
   def find_course
       @course = Coursecontent.find(params[:id])
