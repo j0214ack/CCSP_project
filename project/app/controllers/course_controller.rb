@@ -6,9 +6,16 @@ class CourseController < ApplicationController
   end
   def upload  
       #raise params[:course].	  
-         post = Coursecontent.save(params[:course])
+         fileName = Coursecontent.save(params[:course])
+         name = /(.*)(\.ppt|\.pptx)/.match(fileName)[1]
          flash[:notice] = "File has been uploaded successfully"
-         redirect_to 'home/slide'
+         command1 = "unoconv #{Rails.root}/public/data/" + fileName
+         command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/" + name + ".pdf #{Rails.root}/public/data/" + name +".jpg"
+         fork do 
+           system command1
+           system command2
+         end
+         redirect_to '/home/slide'
   end
   def show
       	  
