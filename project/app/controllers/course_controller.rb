@@ -9,9 +9,11 @@ class CourseController < ApplicationController
          fileName = Coursecontent.save(params[:course])
          name = /(.*)(\.ppt|\.pptx)/.match(fileName)[1]
          flash[:notice] = "File has been uploaded successfully"
-         command1 = "unoconv #{Rails.root}/public/data/" + fileName
-         command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/" + name + ".pdf #{Rails.root}/public/data/" + name +".jpg"
+         command1 = "unoconv #{Rails.root}/public/data/#{fileName}"
+         command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/#{name}.pdf #{Rails.root}/public/data/#{sessioni[:user].username}/#{name}/#{name}.jpg"
          fork do 
+           system "mkdir #{Rails.root}/public/data/#{sessioni[:user].username}"
+           system "mkdir #{Rails.root}/public/data/#{sessioni[:user].username}/#{name}"
            system command1
            system command2
          end
