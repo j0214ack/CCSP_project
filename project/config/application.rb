@@ -1,8 +1,7 @@
 require File.expand_path('../boot', __FILE__)
+
 require 'rails/all'
-#include SslRequirement
-#require 'rack/ssl-enforcer'
-#
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -56,14 +55,5 @@ module Project
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    #config.force_ssl = true
-    #config.middleware.use Rack::SslEnforcer, :only => '/crossdomain.xml',:force_secure_cookies => false
-# rails 3.x
-#config.middleware.insert_before ActionDispatch::Cookies, Rack::SSL
-# Rails 2.3.x
-#config.middleware.insert_after ActionController::Failsafe, Rack::SSL
-   #config.middleware.insert_before ActionDispatch::Static, Rack::SSL, :exclude => proc { |env| env['HTTPS'] != 'on' }
-    end
-  
+  end
 end
-

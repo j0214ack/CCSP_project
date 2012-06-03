@@ -1,44 +1,41 @@
 class UserController < ApplicationController
   before_filter :find_user, :only=> [:show,:edit,:update,:destroy]
-<<<<<<< HEAD
   def login
      if user = Userlist.authenticate(params[:user])
         session[:user] = user # Remember the user
         redirect_to session[:return_to] || '/'
      else
-        #flash[:error] = 'Invalid login.' 
-        redirect_to '/', :username => params[:user][:username], :flash => {:error => 'Failed'}
-        #render :action => 'new'
+        flash[:error] = 'Invalid login.' 
+        redirect_to '/', :username => params[:user][:username]
      end
   end
   def logout
      reset_session
      redirect_to '/'
   end
-=======
->>>>>>> d87593cec2050b49cb9b3e466146d0d495943808
   def index
       @users = Userlist.all
   end
   def new
       @user = Userlist.new
-      render :layout => 'home'
   end
   def create
       @user = Userlist.new(params[:userlist])
       if @user.username == "new"          
+          render :action=>:new
           flash[:alert] = "This name has been taken."
-          render :layout => 'home'
       elsif @user.save
 	      redirect_to users_url #action => :index
       else
-         render :layout => 'home'
+	      render :action => :new
       end
       
   end
+  
   def show
-   
+     render :controller => 'home', :action => 'index'
   end
+
   def edit
   
   end

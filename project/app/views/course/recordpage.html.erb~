@@ -22,8 +22,8 @@
 	function setupGUI() {
 		var gui = new Wami.GUI({
 			id : "wami",
-			recordUrl : "http://localhost:3000/record",
-			playUrl : "http://localhost:3000/record"
+			recordUrl : "https://localhost:3000/record",
+			playUrl : "https://localhost:3000/record",
 		});
 
 		gui.setPlayEnabled(false);

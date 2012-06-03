@@ -33,6 +33,5 @@ Project::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  #config.assets.debug = true
-  #config.force_ssl = true
+  config.assets.debug = true
 end
