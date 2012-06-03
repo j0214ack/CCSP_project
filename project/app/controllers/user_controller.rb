@@ -5,8 +5,9 @@ class UserController < ApplicationController
         session[:user] = user # Remember the user
         redirect_to session[:return_to] || '/'
      else
-        flash[:error] = 'Invalid login.' 
-        redirect_to '/', :username => params[:user][:username]
+        #flash[:error] = 'Invalid login.' 
+        redirect_to '/', :username => params[:user][:username], :flash => {:error => 'Failed'}
+        #render :action => 'new'
      end
   end
   def logout
@@ -18,16 +19,17 @@ class UserController < ApplicationController
   end
   def new
       @user = Userlist.new
+      render :layout => 'home'
   end
   def create
       @user = Userlist.new(params[:userlist])
       if @user.username == "new"          
-          render :action=>:new
           flash[:alert] = "This name has been taken."
+          render :layout => 'home'
       elsif @user.save
 	      redirect_to users_url #action => :index
       else
-	      render :action => :new
+         render :layout => 'home'
       end
       
   end
