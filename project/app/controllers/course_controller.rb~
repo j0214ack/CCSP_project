@@ -29,9 +29,12 @@ class CourseController < ApplicationController
       post = Coursecontent.save(params[:course])
       render :action=>:recordpage
   end
+<<<<<<< HEAD
   def download
      send_file 
   end
+=======
+>>>>>>> 71e94ec42b27b1117ef09d361c33349019f232a1
   protected
   def find_course
       @course = Coursecontent.find(params[:id])

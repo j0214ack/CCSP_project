@@ -13,4 +13,14 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+<<<<<<< HEAD
 *~
+=======
+
+*~
+
+.pdf
+.jpg
+.ppt
+.pptx
+>>>>>>> 71e94ec42b27b1117ef09d361c33349019f232a1

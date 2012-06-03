@@ -12,6 +12,7 @@ class Coursecontent < ActiveRecord::Base
         #write the file
 	File.open(path, "wb+") {|f| f.write(upload['coursecontent'].read) 
         f.close()}	
+   name
   end
   def self.get(name)
         
