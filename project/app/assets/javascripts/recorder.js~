@@ -50,7 +50,6 @@ Wami.nameCallback = function(cb, cleanup) {
 //
 // Wami.startListening()
 //
-flashembed("flash", "my_object.swf");
 Wami.setup = function(options) {
 	if (Wami.startRecording) {
 		// Wami's already defined.

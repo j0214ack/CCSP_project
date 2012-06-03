@@ -6,13 +6,6 @@ class CourseController < ApplicationController
   end
   def upload  
       #raise params[:course].	  
-<<<<<<< HEAD
-         name = Coursecontent.save(params[:course])
-	 command
-	 exec("uconv") if fork.nil?
-	 redirect_to '/home/slide'
-
-=======
          fileName = Coursecontent.save(params[:course])
          name = /(.*)(\.ppt|\.pptx)/.match(fileName)[1]
          flash[:notice] = "File has been uploaded successfully"
@@ -23,7 +16,6 @@ class CourseController < ApplicationController
            system command2
          end
          redirect_to '/home/slide'
->>>>>>> 71e94ec42b27b1117ef09d361c33349019f232a1
   end
   def show
       	  
@@ -44,12 +36,10 @@ class CourseController < ApplicationController
       post = Coursecontent.save(params[:course])
       render :action=>:recordpage
   end
-<<<<<<< HEAD
   def download
      send_file 
   end
-=======
->>>>>>> 71e94ec42b27b1117ef09d361c33349019f232a1
+
   protected
   def find_course
       @course = Coursecontent.find(params[:id])
