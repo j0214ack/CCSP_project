@@ -1,18 +1,5 @@
 class UserController < ApplicationController
   before_filter :find_user, :only=> [:show,:edit,:update,:destroy]
-  def login
-     if user = Userlist.authenticate(params[:user])
-        session[:user] = user # Remember the user
-        redirect_to session[:return_to] || '/'
-     else
-        flash[:error] = 'Invalid login.' 
-        redirect_to '/', :username => params[:user][:username]
-     end
-  end
-  def logout
-     reset_session
-     redirect_to '/'
-  end
   def index
       @users = Userlist.all
   end
@@ -31,11 +18,9 @@ class UserController < ApplicationController
       end
       
   end
-  
   def show
-     render :controller => 'home', :action => 'index'
+   
   end
-
   def edit
   
   end

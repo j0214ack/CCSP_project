@@ -9,7 +9,7 @@
 //=require jquery_ujs
 //require vendor
 //require_tree .
-flashembed("flash", "/assets/swfs/Wami.swf");
+//flashembed("flash", "/assets/swfs/Wami.swf");
 var currentSlide = 0;   // The slide that the user is currently viewing
 var totalSlides = 4;   // Total number of slides in the featured section
 var stepSlide = 2;

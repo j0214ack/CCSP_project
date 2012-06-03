@@ -7840,4 +7840,3 @@ Base.each(this, function(val, key) {
 this.enumerable = true;
 return new (PaperScope.inject(this));
 };
-

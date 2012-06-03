@@ -1,6 +1,7 @@
 # Load the rails application
 require File.expand_path('../application', __FILE__)
-
+# Gemfile
+gem 'rack-ssl'
 
 # Initialize the rails application
 Project::Application.initialize!

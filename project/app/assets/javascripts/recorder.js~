@@ -50,7 +50,6 @@ Wami.nameCallback = function(cb, cleanup) {
 //
 // Wami.startListening()
 //
-flashembed("flash", "my_object.swf");
 Wami.setup = function(options) {
 	if (Wami.startRecording) {
 		// Wami's already defined.
@@ -82,7 +81,7 @@ Wami.setup = function(options) {
 	function setOptions(options) {
 		// Start with default options
 		_options = {
-			swfUrl : "Wami.swf",
+			swfUrl : "/Wami.swf",
 			onReady : function() {
 				Wami.hide();
 			},
