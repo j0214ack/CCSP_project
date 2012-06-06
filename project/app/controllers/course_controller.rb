@@ -1,6 +1,6 @@
 class CourseController < ApplicationController
   #CRUD Function
-   #before_filter :find_course, :only=> [:show,:edit,:update,:destroy]
+  #before_filter :find_course, :only=> [:show]#,:edit,:update,:destroy]
   def index
       @course=Coursecontent.all	  
   end
@@ -20,7 +20,17 @@ class CourseController < ApplicationController
          redirect_to '/home/slide'
   end
   def show
-      	  
+    #if @course.available?
+       @channel = "/messages/new/#{params[:id]}"
+       @messages = Message.find_all_by_channel(@channel)
+       @slideSource = "/assets/math-symbols.jpg"
+       render :layout => 'slide'
+    #else
+    #   redirect_to "course/#{params[:id]}/wait"
+    #end
+  end
+  def wait
+    render :layout => 'home'
   end
   def edit
   end

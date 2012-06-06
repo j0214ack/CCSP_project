@@ -1,4 +1,4 @@
-		<canvas id="slide"></canvas>
+		<canvas id="slide" style="background-image:url(<%=@slideSource%>)"></canvas>
 		<div class="flow-controll">
          <%= link_to :action => 'index' do %>
 			<button class="flow-controll" id="back-home"></button> 
@@ -74,10 +74,27 @@
 				<div id="chat_content">
                <%= render @messages %>
             </div>
+            <% name = nil
+               if session[:user]
+                  name = session[:user].username
+               else
+                  name = "guest"
+               end
+            %>
             <%= form_for Message.new, :remote => true do |f| %>
             <%= f.text_field :content, :id => 'input_line' %>
-            <%= f.hidden_field :from, :value => session[:user].username %>
+            <%= f.hidden_field :from, :value => name %>
+            <%= f.hidden_field :channel, :value => @channel %>
             <%= f.submit "Send" %>
             <% end %>
 			</div>
 		</div>
+      <script>
+         //----------------------faye server------------------------------// 
+              var faye = new Faye.Client('http://localhost:9292/faye');
+              faye.subscribe("<%= escape_javascript @channel %>", function (data) {
+                 //console.log(data);
+                 //alert(data);
+                 eval(data);
+              });
+      </script>
