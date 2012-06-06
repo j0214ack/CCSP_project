@@ -83,12 +83,12 @@ class CourseController < ApplicationController
       render :action=>:recordpage
   end
   
-  #def playrecord 
-  #  name = params[:filename]
-  #  format = params[:format]
-  #  filename = name+"."+format    
-  #  redirect_to 'http://localhost:3000/data/#{filename}'
-  #end
+  def playrecord 
+    name = params[:filename]
+    format = params[:format]
+    filename = name+"."+format    
+    redirect_to 'http://localhost:3000/data/#{filename}'
+  end
   def download	  
     redirect_to 'http://localhost:3000/data/hw4.zip'
   end
