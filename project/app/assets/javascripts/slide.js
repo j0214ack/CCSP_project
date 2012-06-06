@@ -108,6 +108,7 @@ $(function(){
 				toMove = true;
 				break;
 			case "chat_tag": 
+            var showChat = false;
 				container = sideBoxCon; 
 				if (sideBoxStatus == SB.CHAT){
 					chat.hide();
@@ -116,16 +117,20 @@ $(function(){
 					toMove = true;
 				} 
 				else if (sideBoxStatus == SB.HIDDEN){
-					chat.show();
+					chat.show(); showChat = true;
 					panel.hide();
 					sideBoxStatus = SB.CHAT;
 					toMove = true;
 				} 
 				else if (sideBoxStatus == SB.PANEL){
-					chat.show();
+					chat.show(); showChat = true;
 					panel.hide();
 					sideBoxStatus = SB.CHAT;
 				}
+            if (showChat){
+               var chatCon = $("#chat_content");
+               chatCon.scrollTop(chatCon[0].scrollHeight);
+            }
 				break;
 			case "panel_tag": 
 				container = sideBoxCon; 
@@ -206,6 +211,7 @@ $(function(){
 		clickTag($(this))
 	});
 	playBtn.toggle(startRecord,pauseRecord);
+
 	
 });
 

@@ -6,7 +6,7 @@ class Coursecontent < ActiveRecord::Base
   belongs_to :courselist
   def self.save(upload)
 	name = upload['coursecontent'].original_filename
-        directory = "#{Rails.root}/public/data"
+   directory = "#{Rails.root}/public/data"
 	#create the file path
 	path = File.join(directory,name)
         #write the file

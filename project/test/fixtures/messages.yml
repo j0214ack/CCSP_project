@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  from: MyString
   content: MyString
+  from: MyString
+  channel: MyString
 
 two:
-  from: MyString
   content: MyString
+  from: MyString
+  channel: MyString

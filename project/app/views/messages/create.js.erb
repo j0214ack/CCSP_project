@@ -1,2 +1,9 @@
+var chatCon = $("#chat_content");
+var scrollHeight = chatCon[0].scrollHeight;
+var chatConHeight = chatCon.height();
+//http://stackoverflow.com/questions/4655273/jquery-window-scrolltop-but-no-window-scrollbottom
+<% broadcast @message.channel do %>
 $("#chat_content").append("<%= escape_javascript render(@message) %>");
-$("#input_line")[0].reset();
+$("#chat_content").scrollTop(scrollHeight);
+<% end %>
+$("#input_line").val('');

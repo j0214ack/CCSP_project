@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120606050917) do
+=======
+ActiveRecord::Schema.define(:version => 20120606090911) do
+>>>>>>> 8088da625524e57851ab52bac277937cb04d9602
 
   create_table "coursecontents", :force => true do |t|
     t.integer  "courseid"
@@ -43,8 +47,9 @@ ActiveRecord::Schema.define(:version => 20120606050917) do
   end
 
   create_table "messages", :force => true do |t|
-    t.string   "from"
     t.string   "content"
+    t.string   "from"
+    t.string   "channel"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
