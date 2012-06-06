@@ -82,7 +82,8 @@ Project::Application.routes.draw do
     delete '/course'                    => "course#destroy",:as => "course"
     get    '/record'                    => "course#recordpage",:as=>"course"
     post   '/record'                    => "course#record", :as => "course"
-
+    get    '/download'                  => "course#download", :as=>"course"
+    get    '/showUserDescribedCourse'   => "course#showUserDescribedCourse",:as=>"course" 
   end
   #resources :user
   resources :course

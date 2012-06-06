@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120531030046) do
+ActiveRecord::Schema.define(:version => 20120606050917) do
 
   create_table "coursecontents", :force => true do |t|
     t.integer  "courseid"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20120531030046) do
     t.string   "ispublic"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slideorder"
   end
 
   create_table "describerlists", :force => true do |t|
