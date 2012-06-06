@@ -5,6 +5,7 @@ class CourseController < ApplicationController
   def index
       @course=Coursecontent.all	  
   end
+
   def upload  
       #raise params[:course].	  
          fileName = Coursecontent.save(params[:course])
