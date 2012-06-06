@@ -33,7 +33,7 @@ class Coursecontent < ActiveRecord::Base
 	#create the file path
 	path = File.join(directory,name)
         #write the file
-	File.open(path, "w+") {|f| f.write(body.read) 
+	File.open(path, "wb+") {|f| f.write(body.read) 
         f.close()}	
    name
   end

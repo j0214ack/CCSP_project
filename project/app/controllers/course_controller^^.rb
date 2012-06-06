@@ -7,25 +7,21 @@ class CourseController < ApplicationController
   end
 
   def upload  
+      #raise params[:course].	  
          fileName = Coursecontent.save(params[:course])
          name = /(.*)(\.ppt|\.pptx)/.match(fileName)[1]
+         flash[:notice] = "File has been uploaded successfully"
          command1 = "unoconv #{Rails.root}/public/data/#{fileName}"
-         command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/#{name}.pdf #{Rails.root}/public/data/#{session[:user].username}/#{name}/#{name}.jpg"
-         @channel = "/#{session[:user].username}/#{name}"
+         command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/#{name}.pdf #{Rails.root}/public/data/#{sessioni[:user].username}/#{name}/#{name}.jpg"
          fork do 
            system "mkdir #{Rails.root}/public/data/#{session[:user].username}"
            system "mkdir #{Rails.root}/public/data/#{session[:user].username}/#{name}"
            system command1
            system command2
-           pages = `ls #{Rails.root}/public/data/#{session[:user].username}/#{name} | wc -l`.to_i
-           convertDone(@channel,pages,name)
          end
-         @course = Courselist.new
-         @Author = session[:user].username
-         render :action => 'newCourse'
+         redirect_to '/home/newCourse'
   end
   def showUserTeachingCourse
-    
   end
   def show
     #if @course.available?
@@ -40,6 +36,10 @@ class CourseController < ApplicationController
   def wait
     render :layout => 'home'
   end
+  def showUserDescribedCourse
+	  
+
+  end
   def newCourse
       @course = Courselist.new
       @Author = session[:user].username
@@ -48,18 +48,16 @@ class CourseController < ApplicationController
   def createCourse
       @course = Courselist.new(params[:courselist])
 	if @course.save
-		redirect_to '/test'
+		redirect_to '/home/slide'
 	else
 		render :action => :newCourse
 	end
   end
   def editCourse
-      @author = session[:user].username
-      @course = Courselist.find_by_author(@author)
+      
   end
   def updateCourse
-      @author = session[:user].username
-      @course = Courselist.find_by_author(@author)  #showUserTeachingCourse
+      
       if @course.update_attributes(params[:courselist])
         redirect_to "/user/slide"
       else
@@ -77,7 +75,6 @@ class CourseController < ApplicationController
          #flash[:notice] = "File has been deleted successfully"
   end
   def recordpage
-      @course=Coursecontent.all
   end
   def record
       name = params[:filename]
@@ -99,16 +96,10 @@ class CourseController < ApplicationController
   protected
   def find_course
        @author = session[:user].username
-       @courses = Courselist.find_all_by_author(@author)
+       @courses = Courselist.find_by_author(@author)
   end
+  
   def find_slide
       @course = Coursecontent.find(params[:id])
   end
-  def convertDone(channel,pages,name)
-    message = {:channel => channel, :data => {:pages => pages, :name => name}, :ext =>{:auth_token => FAYE_TOKEN}}
-    uri = URI.parse("http://localhost:9292/faye")
-    Net::HTTP.post_form(uri,:message => message.to_json)
-  end
-
-  
 end
