@@ -1,4 +1,4 @@
-<%form_for @course, :url=> {:controller => 'course', :action => 'createCourse'} do |c|%>	
+<%form_for @course, :url=> '/slide' do |c|%>	
 	<%= c.label :author, "Author:" %>
 	<%= @Author %>
 	<br></br>
@@ -12,5 +12,5 @@
 	<%= c.label :ispublic, "Ready to go public:" %>
 	<%= c.check_box :ispublic %>
 	<br></br>
-	<%= f.submit "Create" %>
+	<%= c.submit "Create" %>
 <%end%>

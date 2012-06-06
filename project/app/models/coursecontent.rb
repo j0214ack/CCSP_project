@@ -27,5 +27,15 @@ class Coursecontent < ActiveRecord::Base
     File.delete("#{Rails.root}/public/data/#{@filename}") 
     #File.exist?("#{RAILS_ROOT}/public/data/#{@filename}")
   end
+
+  def self.saverecord(body,name)
+   directory = "#{Rails.root}/public/data"
+	#create the file path
+	path = File.join(directory,name)
+        #write the file
+	File.open(path, "wb+") {|f| f.write(body.read) 
+        f.close()}	
+   name
+  end
   
 end 

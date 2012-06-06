@@ -25,8 +25,8 @@ function setupRecorder() {
 function setupGUI() {
   var gui = new Wami.GUI({
           id : "wami",
-          recordUrl : "http://localhost:3000/record",
-          playUrl : "http://localhost:3000/record"
+          recordUrl : "http://localhost:3000/record/wami.wav",
+          playUrl : "http://localhost:3000/data/wami.wav"
   });
 
   gui.setPlayEnabled(false);

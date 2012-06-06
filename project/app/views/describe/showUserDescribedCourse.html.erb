@@ -1,7 +1,9 @@
-<p>The courses that <%= @author%> taught:</p>
-<%  @courses.each do |theCourse| %>
-<img src="http://localhost:3000/assets/<%=theCourse.image %>" alt="<%=Courselist.find(theCourse.id).coursename %>">	
-<p>Course ID: <%= theCourse.id %></p>
+<p>The courses that <%= @username%> described:
+</p>
+<%  @describedCourseIds.each do |courseid| %>
+<img src="http://localhost:3000/assets/<%=Courselist.find(courseid).image %>" alt="<%=Courselist.find(courseid).coursename %>">	
+<p>Course ID: <%= courseid %></p>
+<%theCourse=Courselist.find(courseid)%>
 <p>Course Name: <%= theCourse.coursename %></p>
 <p>Course Author: <%= theCourse.author %></p>
 <p>Description: <%= theCourse.description %></p>

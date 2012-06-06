@@ -1,7 +1,6 @@
 class CourseController < ApplicationController
   #CRUD Function
   before_filter :find_course, :only=> [:showUserTeachingCourse,:editCourse,:updateCourse,:destroyCourse]
-  before_filter :find_described, :only => [:showUserDescribedCourse]
   #before_filter :find_course, :only=> [:show]#,:edit,:update,:destroy]
   def index
       @course=Coursecontent.all	  
@@ -45,7 +44,7 @@ class CourseController < ApplicationController
       @Author = session[:user].username
       @course.author = @Author
   end
-  def creatCourse
+  def createCourse
       @course = Courselist.new(params[:courselist])
 	if @course.save
 		redirect_to '/home/slide'
@@ -54,12 +53,10 @@ class CourseController < ApplicationController
 	end
   end
   def editCourse
-      @author = session[:user].username
-      @course = Courselist.find_by_author(@author)
+      
   end
   def updateCourse
-      @author = session[:user].username
-      @course = Courselist.find_by_author(@author)  showUserTeachingCourse
+      
       if @course.update_attributes(params[:courselist])
         redirect_to "/user/slide"
       else
@@ -77,11 +74,20 @@ class CourseController < ApplicationController
          #flash[:notice] = "File has been deleted successfully"
   end
   def recordpage
-      @course=Coursecontent.all
   end
   def record
-      post = Coursecontent.save(params[:course])
+      name = params[:filename]
+      format = params[:format]
+      filename = name+"."+format
+      post = Coursecontent.saverecord(request.body,filename)
       render :action=>:recordpage
+  end
+  
+  def playrecord 
+    name = params[:filename]
+    format = params[:format]
+    filename = name+"."+format    
+    redirect_to 'http://localhost:3000/data/#{filename}'
   end
   def download	  
     redirect_to 'http://localhost:3000/data/hw4.zip'
@@ -89,13 +95,9 @@ class CourseController < ApplicationController
   protected
   def find_course
        @author = session[:user].username
-       @course = Courselist.find_by_author(@author)
+       @courses = Courselist.find_by_author(@author)
   end
-  def find_described
-       @username = session[:user].username
-       userid = Userlist.find_by_username(@username)
-       @describedCourseIds = Describelist.find_by_userid(userid)
-  end
+  
   def find_slide
       @course = Coursecontent.find(params[:id])
   end
