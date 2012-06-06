@@ -1,22 +1,13 @@
 class SlideController < ApplicationController
-require 'cgi'
-require 'uri'
-require 'net/http'
- 
-  def sendingjson
-      raw_post :index, {}, {:foo => "bar", :bool => true}.to_json	
+  def new
+    @slide = Coursecontent.new
   end
-  def sendrequest
-    uri = URI.parse("https://localhost:3000/crossdomain.xml")
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-    http.ca_file =  "#{Rails.root}/project.csr"
-    http.start do
-      puts http.get("#{host}#{path}")
+  def create
+    @slide = Coursecontent.new(params[:coursecontent])
+    if @slide.save
+      
+    else
     end
-    	  
   end
-
 
 end

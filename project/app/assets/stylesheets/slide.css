@@ -151,6 +151,31 @@ hr{
 	border: solid 2px white;
 }
 
+.slide_items{
+   overflow-y: auto;
+   height: 480px;
+}
+
+#panel{
+}
+
+#panel_content{
+}
+
+/*
+.panel_item {
+   overflow-y: auto;
+}
+*/
+
+.item {
+   margin: 10px;
+}
+
+.item .item_info{
+   width: 80px;
+}
+
 input#input_line{
 	border: solid 2px black;
 	border-top: 0px;
@@ -231,7 +256,13 @@ a.item_thumb{
 	float: left;
 	/*height: 105px;*/
 	height: auto;
-	width: 140px;
+	width: 70px;
+   margin-right: 5px;
+}
+
+a.item_thumb img{
+   height: 80px;
+   width: 100px;
 }
 
 div.item_info{
@@ -287,4 +318,8 @@ button#prevBtn{
    float: right;
    color: grey;
    /*right: 0px;*/
+}
+
+a{
+   cursor: pointer;
 }

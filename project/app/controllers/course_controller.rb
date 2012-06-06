@@ -9,15 +9,17 @@ class CourseController < ApplicationController
   def upload  
          fileName = Coursecontent.save(params[:course])
          name = /(.*)(\.ppt|\.pptx)/.match(fileName)[1]
-         filePath = "#{Rails.root}/public/data/#{session[:user].username}/#{name}/#{name}"
+         filePath = "/data/#{session[:user].username}/#{name}/#{name}"
          command1 = "unoconv #{Rails.root}/public/data/#{fileName}"
          command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/#{name}.pdf #{Rails.root}/public/data/#{session[:user].username}/#{name}/#{name}.jpg"
+         command3 = "convert -size 100x80 -quality 10 #{Rails.root}/public/data/#{name}.pdf #{Rails.root}/public/data/#{session[:user].username}/#{name}/#{name}-thumb.jpg"
          @channel = "/#{session[:user].username}/#{name}"
          fork do 
            system "mkdir #{Rails.root}/public/data/#{session[:user].username}"
            system "mkdir #{Rails.root}/public/data/#{session[:user].username}/#{name}"
            system command1
            system command2
+           system command3
            pages = `ls #{Rails.root}/public/data/#{session[:user].username}/#{name} | wc -l`.to_i
            convertDone(@channel,pages,filePath)
          end
@@ -53,9 +55,10 @@ class CourseController < ApplicationController
       @course.slideorder[:totalPage] = pages
       pages.times do |i|
         @course.slideorder[i] = "#{name}-#{i}.jpg"
+        @course.slideorder["thumb#{i}"] = "#{name}-thumb-#{i}.jpg"
       end
 	if @course.save
-		render :action => :show
+		redirect_to "/course/#{@course.id}"
 	else
 		render :action => :newCourse
 	end
@@ -84,13 +87,14 @@ class CourseController < ApplicationController
          #flash[:notice] = "File has been deleted successfully"
   end
   def recordpage
-      @course=Coursecontent.all
+      
   end
   def record
       name = params[:filename]
       format = params[:format]
-      filename = name+"."+format
+      filename = Digest::MD5.hexdigest(Time.now.to_s).encode("utf-8")+"."+format
       post = Coursecontent.saverecord(request.body,filename)
+      
       render :action=>:recordpage
   end
   

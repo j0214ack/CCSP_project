@@ -1,4 +1,4 @@
-		<canvas id="slide" style="background-image:url(<%=@course.slideorder%>)"></canvas>
+		<canvas id="slide" style="background-image:url(<%=@course.slideorder[0]%>)"></canvas>
 		<div class="flow-controll">
          <%= link_to '/' do %>
 			<button class="flow-controll" id="back-home"></button> 
@@ -33,7 +33,7 @@
 				<hr/>
 				<div id="panel_content">
 					<div class="record_items">
-						<div class="panel_item record_item">
+						<div class="item record_item">
 							<div class="item_info">
 								<h3 class="title">slide 1</h3>
 								<span class="record_time">0:33</span>
@@ -43,11 +43,11 @@
 					</div>
 					<div class="slide_items">
                   <% @course.slideorder[:totalPage].to_i.times do |i| %>
-						<div class="panel_item slide_item">
+						<div class="item slide_item">
 							<div class="item_info">
-								<h3 class="title">slide 1</h3>
+								<h3 class="title">slide <%=i+1%></h3>
 							</div>
-							<a class="item_thumb"><img src="<%= @course.slideorder[i] %>"> </a>
+							<a class="item_thumb control_change" id="<%=i%>thumb"><img src="<%= @course.slideorder["thumb#{i}"] %>"></a>
 						</div>
                   <% end %>
 					</div>
@@ -81,4 +81,5 @@
                  //alert(data);
                  eval(data);
               });
+         
       </script>

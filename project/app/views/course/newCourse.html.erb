@@ -7,6 +7,7 @@
 <%= form_for @course, :url=> {:controller => 'course', :action => 'createCourse'} do |c|%>	
 	<%= c.label :author, "Author:" %>
 	<%= @Author %>
+	<%= c.hidden_field :author, :value => @Author %>
 	<%= hidden_field_tag :totalPage %>
 	<%= hidden_field_tag :fileName %>
 	<br></br>
