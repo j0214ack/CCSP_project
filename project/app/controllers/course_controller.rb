@@ -5,6 +5,7 @@ class CourseController < ApplicationController
   def index
       @course=Coursecontent.all	  
   end
+
   def upload  
          fileName = Coursecontent.save(params[:course])
          name = /(.*)(\.ppt|\.pptx)/.match(fileName)[1]
