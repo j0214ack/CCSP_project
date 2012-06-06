@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<%form_for @course, :url=> '/slide' do |c|%>	
-=======
 <% if @course.errors.any? %>
 	<ul><% @course.errors.full_messages.each do |msg|%>
 			<li><%=msg%></li>
@@ -8,10 +5,10 @@
 	</ul>
 <%end%>
 <%= form_for @course, :url=> {:controller => 'course', :action => 'createCourse'} do |c|%>	
->>>>>>> f4854fbc7e08a40b5bc36e65a58fe06b3cacec43
 	<%= c.label :author, "Author:" %>
 	<%= @Author %>
-	<%= c.hidden_field :author, :value => @Author %>
+	<%= hidden_field_tag :totalPage %>
+	<%= hidden_field_tag :fileName %>
 	<br></br>
 	<%= c.label :coursename, "Course Name:" %>
 	<%= c.text_field :coursename %>
@@ -23,16 +20,12 @@
 	<%= c.label :ispublic, "Ready to go public:" %>
 	<%= c.check_box :ispublic %>
 	<br></br>
-<<<<<<< HEAD
-	<%= c.submit "Create" %>
-=======
    <div id="wait">
    <span>Waiting For Converting....</span>
    <span>It may take 2 or 3 minutes</span>
    <%= image_tag 'load.gif' %>
    </div>
 	<%= c.submit "Create", :id => "submit" %>
->>>>>>> f4854fbc7e08a40b5bc36e65a58fe06b3cacec43
 <%end%>
 <%= javascript_include_tag :defaults, "http://localhost:9292/faye.js" %>
 <script>
@@ -43,10 +36,11 @@ console.log("outer");
 faye.subscribe("<%= escape_javascript @channel %>", function (data) {
       console.log("done!");
       console.log(data);
+      $("#totalPage").attr("value",data.pages);
+      $("#fileName").attr("value",data.name);
       //alert("converted done!");
       //eval(data);
       $("#wait").hide();
       $("#submit").show();
 });
 </script>
-

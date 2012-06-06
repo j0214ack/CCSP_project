@@ -9,6 +9,7 @@ class CourseController < ApplicationController
   def upload  
          fileName = Coursecontent.save(params[:course])
          name = /(.*)(\.ppt|\.pptx)/.match(fileName)[1]
+         filePath = "#{Rails.root}/public/data/#{session[:user].username}/#{name}/#{name}"
          command1 = "unoconv #{Rails.root}/public/data/#{fileName}"
          command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/#{name}.pdf #{Rails.root}/public/data/#{session[:user].username}/#{name}/#{name}.jpg"
          @channel = "/#{session[:user].username}/#{name}"
@@ -18,7 +19,7 @@ class CourseController < ApplicationController
            system command1
            system command2
            pages = `ls #{Rails.root}/public/data/#{session[:user].username}/#{name} | wc -l`.to_i
-           convertDone(@channel,pages,name)
+           convertDone(@channel,pages,filePath)
          end
          @course = Courselist.new
          @Author = session[:user].username
@@ -31,7 +32,7 @@ class CourseController < ApplicationController
     #if @course.available?
        @channel = "/messages/new/#{params[:id]}"
        @messages = Message.find_all_by_channel(@channel)
-       @slideSource = "/assets/math-symbols.jpg"
+       @course = Courselist.find(params[:id])#slideSource = "/assets/math-symbols.jpg"
        render :layout => 'slide'
     #else
     #   redirect_to "course/#{params[:id]}/wait"
@@ -46,9 +47,15 @@ class CourseController < ApplicationController
       @course.author = @Author
   end
   def createCourse
+      pages = params[:totalPage].to_i
+      name = params[:fileName]
       @course = Courselist.new(params[:courselist])
+      @course.slideorder[:totalPage] = pages
+      pages.times do |i|
+        @course.slideorder[i] = "#{name}-#{i}.jpg"
+      end
 	if @course.save
-		redirect_to '/test'
+		render :action => :show
 	else
 		render :action => :newCourse
 	end

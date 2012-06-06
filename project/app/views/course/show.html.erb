@@ -1,4 +1,4 @@
-		<canvas id="slide" style="background-image:url(<%=@slideSource%>)"></canvas>
+		<canvas id="slide" style="background-image:url(<%=@course.slideorder%>)"></canvas>
 		<div class="flow-controll">
          <%= link_to '/' do %>
 			<button class="flow-controll" id="back-home"></button> 
@@ -42,30 +42,14 @@
 						</div>
 					</div>
 					<div class="slide_items">
+                  <% @course.slideorder[:totalPage].to_i.times do |i| %>
 						<div class="panel_item slide_item">
 							<div class="item_info">
 								<h3 class="title">slide 1</h3>
 							</div>
-							<a class="item_thumb">thumbnail</a>
+							<a class="item_thumb"><img src="<%= @course.slideorder[i] %>"> </a>
 						</div>
-						<div class="panel_item slide_item">
-							<div class="item_info">
-								<h3 class="title">slide 2</h3>
-							</div>
-							<a class="item_thumb">thumbnail</a>
-						</div>
-						<div class="panel_item slide_item">
-							<div class="item_info">
-								<h3 class="title">slide 3</h3>
-							</div>
-							<a class="item_thumb">thumbnail</a>
-						</div>
-						<div class="panel_item slide_item">
-							<div class="item_info">
-								<h3 class="title">slide 4</h3>
-							</div>
-							<a class="item_thumb">thumbnail</a>
-						</div>
+                  <% end %>
 					</div>
 				</div>
 			</div>
