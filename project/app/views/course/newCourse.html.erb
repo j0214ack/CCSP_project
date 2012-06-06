@@ -1,0 +1,16 @@
+<%form_for @course, :url=> {:controller => 'course', :action => 'createCourse'} do |c|%>	
+	<%= c.label :author, "Author:" %>
+	<%= @Author %>
+	<br></br>
+	<%= c.label :coursename, "Course Name:" %>
+	<%= c.text_field :coursename %>
+	<br></br>
+	<%= c.label :description, "Description:" %>
+	<br></br>
+	<%= c.text_area :description %>
+	<br></br>
+	<%= c.label :ispublic, "Ready to go public:" %>
+	<%= c.check_box :ispublic %>
+	<br></br>
+	<%= f.submit "Create" %>
+<%end%>

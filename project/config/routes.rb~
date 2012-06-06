@@ -1,4 +1,8 @@
 Project::Application.routes.draw do
+  get "messages/index"
+
+  get "messages/create"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -55,8 +59,17 @@ Project::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  root :to => 'home#index'
+  match '/home/slide' => 'home#slide'
+  match '/user/login' => 'user#login', :via => 'post'
+  match '/logout' => 'user#logout'
   
   Project::Application.routes.draw do
+
+  get "messages/index"
+
+  get "messages/create"
+
     get    '/user'                      => "user#index",   :as => "users"
     post   '/user'                      => "user#create",  :as => "users"
     get    '/user/new'                  => "user#new",     :as => "new_user"
@@ -69,8 +82,10 @@ Project::Application.routes.draw do
     delete '/course'                    => "course#destroy",:as => "course"
     get    '/record'                    => "course#recordpage",:as=>"course"
     post   '/record'                    => "course#record", :as => "course"
-
+    get    '/download'                  => "course#download", :as=>"course"
+    get    '/showUserDescribedCourse'   => "showUserDescribedCourse",:as=>"course" 
   end
   #resources :user
   resources :course
+  resources :messages
 end
