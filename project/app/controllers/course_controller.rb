@@ -6,19 +6,22 @@ class CourseController < ApplicationController
       @course=Coursecontent.all	  
   end
   def upload  
-      #raise params[:course].	  
          fileName = Coursecontent.save(params[:course])
          name = /(.*)(\.ppt|\.pptx)/.match(fileName)[1]
-         flash[:notice] = "File has been uploaded successfully"
          command1 = "unoconv #{Rails.root}/public/data/#{fileName}"
          command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/#{name}.pdf #{Rails.root}/public/data/#{session[:user].username}/#{name}/#{name}.jpg"
+         @channel = "/#{session[:user].username}/#{name}"
          fork do 
            system "mkdir #{Rails.root}/public/data/#{session[:user].username}"
            system "mkdir #{Rails.root}/public/data/#{session[:user].username}/#{name}"
            system command1
            system command2
+           pages = `ls #{Rails.root}/public/data/#{session[:user].username}/#{name} | wc -l`.to_i
+           convertDone(@channel,pages,name)
          end
-         redirect_to '/home/newCourse'
+         @course = Courselist.new
+         @Author = session[:user].username
+         render :action => 'newCourse'
   end
   def showUserTeachingCourse
     
@@ -90,5 +93,11 @@ class CourseController < ApplicationController
   def find_slide
       @course = Coursecontent.find(params[:id])
   end
+  def convertDone(channel,pages,name)
+    message = {:channel => channel, :data => {:pages => pages, :name => name}, :ext =>{:auth_token => FAYE_TOKEN}}
+    uri = URI.parse("http://localhost:9292/faye")
+    Net::HTTP.post_form(uri,:message => message.to_json)
+  end
+
   
 end
