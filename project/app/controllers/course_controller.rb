@@ -1,7 +1,6 @@
 class CourseController < ApplicationController
   #CRUD Function
   before_filter :find_course, :only=> [:showUserTeachingCourse,:editCourse,:updateCourse,:destroyCourse]
-  before_filter :find_described, :only => [:showUserDescribedCourse]
   #before_filter :find_course, :only=> [:show]#,:edit,:update,:destroy]
   def index
       @course=Coursecontent.all	  
@@ -12,7 +11,7 @@ class CourseController < ApplicationController
          name = /(.*)(\.ppt|\.pptx)/.match(fileName)[1]
          flash[:notice] = "File has been uploaded successfully"
          command1 = "unoconv #{Rails.root}/public/data/#{fileName}"
-         command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/#{name}.pdf #{Rails.root}/public/data/#{sessioni[:user].username}/#{name}/#{name}.jpg"
+         command2 = "convert -quality 100 -density 300x300 #{Rails.root}/public/data/#{name}.pdf #{Rails.root}/public/data/#{session[:user].username}/#{name}/#{name}.jpg"
          fork do 
            system "mkdir #{Rails.root}/public/data/#{session[:user].username}"
            system "mkdir #{Rails.root}/public/data/#{session[:user].username}/#{name}"
@@ -22,6 +21,7 @@ class CourseController < ApplicationController
          redirect_to '/home/newCourse'
   end
   def showUserTeachingCourse
+    
   end
   def show
     #if @course.available?
@@ -36,19 +36,15 @@ class CourseController < ApplicationController
   def wait
     render :layout => 'home'
   end
-  def showUserDescribedCourse
-	  
-
-  end
   def newCourse
       @course = Courselist.new
       @Author = session[:user].username
       @course.author = @Author
   end
-  def creatCourse
+  def createCourse
       @course = Courselist.new(params[:courselist])
 	if @course.save
-		redirect_to '/home/slide'
+		redirect_to '/test'
 	else
 		render :action => :newCourse
 	end
@@ -59,7 +55,7 @@ class CourseController < ApplicationController
   end
   def updateCourse
       @author = session[:user].username
-      @course = Courselist.find_by_author(@author)  showUserTeachingCourse
+      @course = Courselist.find_by_author(@author)  #showUserTeachingCourse
       if @course.update_attributes(params[:courselist])
         redirect_to "/user/slide"
       else
@@ -89,14 +85,10 @@ class CourseController < ApplicationController
   protected
   def find_course
        @author = session[:user].username
-       @course = Courselist.find_by_author(@author)
-  end
-  def find_described
-       @username = session[:user].username
-       userid = Userlist.find_by_username(@username)
-       @describedCourseIds = Describelist.find_by_userid(userid)
+       @courses = Courselist.find_all_by_author(@author)
   end
   def find_slide
       @course = Coursecontent.find(params[:id])
   end
+  
 end

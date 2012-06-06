@@ -1,6 +1,13 @@
-<%form_for @course, :url=> {:controller => 'course', :action => 'createCourse'} do |c|%>	
+<% if @course.errors.any? %>
+	<ul><% @course.errors.full_messages.each do |msg|%>
+			<li><%=msg%></li>
+		<%end%>
+	</ul>
+<%end%>
+<%= form_for @course, :url=> {:controller => 'course', :action => 'createCourse'} do |c|%>	
 	<%= c.label :author, "Author:" %>
 	<%= @Author %>
+	<%= c.hidden_field :author, :value => @course.author %>
 	<br></br>
 	<%= c.label :coursename, "Course Name:" %>
 	<%= c.text_field :coursename %>
@@ -12,5 +19,5 @@
 	<%= c.label :ispublic, "Ready to go public:" %>
 	<%= c.check_box :ispublic %>
 	<br></br>
-	<%= f.submit "Create" %>
+	<%= c.submit "Create" %>
 <%end%>

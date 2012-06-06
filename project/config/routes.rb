@@ -69,7 +69,7 @@ Project::Application.routes.draw do
   get "messages/index"
 
   get "messages/create"
-
+    get    '/test' => "course#showUserTeachingCourse"
     get    '/user'                      => "user#index",   :as => "users"
     post   '/user'                      => "user#create",  :as => "users"
     get    '/user/new'                  => "user#new",     :as => "new_user"
@@ -84,8 +84,10 @@ Project::Application.routes.draw do
     post   '/record'                    => "course#record", :as => "course"
     get    '/download'                  => "course#download", :as=>"course"
     get    '/showUserDescribedCourse'   => "course#showUserDescribedCourse",:as=>"course" 
+    get    '/home/newCourse'   => "course#newCourse"
+    post    '/home/createCourse'   => "course#createCourse"
   end
   #resources :user
-  resources :course
+  resources :courselist
   resources :messages
 end
