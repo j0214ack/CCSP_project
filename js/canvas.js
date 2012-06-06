@@ -16,12 +16,27 @@ var hitOptions = {
 	tolerance: 5
 };
 var toDelete=null;
+var data={
+	startTime:null,
+	paths:[], // n * {color,startT,[{x,y},{x,y}..],.endT}
+	endTime:null
+}; 
+startRecording(); // temporary
+function startRecording()
+{
 
-myTool.dblclick=function(event){
-	alert(124);
-}
+var pathJSON=null;
 myTool.onMouseDown=function (event) {	
-if(currentTool.type=="pencil"){
+if(currentTool.type=="pencil")
+{
+	pathJSON={
+		color:null,
+		startTime:null,
+		endTime:null,
+		points:[] // x,y
+	};
+	pathJSON.color=currentTool.color
+	pathJSON.startTime=new Date().getTime();
     // If we produced a path before, deselect it:
     if (path) {
         path.selected = false;
@@ -70,6 +85,7 @@ else{
 myTool.onMouseDrag=function (event) {
 if(currentTool.type=="pencil"){
     path.add(event.point);
+    //pathJSON.points.push({x:event.point.x , y:event.point.y});
 }
 else{
 }
@@ -78,24 +94,79 @@ else{
 myTool.onMouseUp=function (event) {
 if(currentTool.type=="pencil"){
 
-       var segmentCount = path.segments.length;
-       // When the mouse is released, simplify it:
-       path.simplify(10);
-   //alert(path.segments[path.segments.length-1].point.x);
-   //alert(event.point.x)
-       // Select the path, so we can see its segments:
-       //path.fullySelected = true;
-       alert(path.segments);
-
-//       var newSegmentCount = path.segments.length;
-  //     var difference = segmentCount - newSegmentCount;
-    //   var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
-
+	var segmentCount = path.segments.length;
+	path.simplify(10);
+	
+	for(var i=0;i<path.segments.length;i++)
+	{
+		var pt=path.segments[i].point;
+		pathJSON.points.push({x:pt.x , y:pt.y});
+	}
+	pathJSON.endTime=new Date().getTime();
+	data.paths.push(deepCopy(pathJSON));
+//endRecording();
+//alert(JSON.stringify(data));
 }
 else{
 }
 
 }
+
+// end set event handlers
+
+data.startTime=new Date().getTime();
+
+}// end startRecording
+
+endRecording=function()
+{
+	data.endTime=new Date().getTime();
+
+	myTool.onMouseDown=null;
+	myTool.onMouseMove=null;
+	myTool.onMouseDrag=null;
+	myTool.onMouseUp=null;
+return data;
+}
+
+function drawNext(thePath,point)
+{
+        return function(){
+                thePath.add(point);
+	//	alert("thePath:"+point);
+	//	alert("myPath:"+myPath.segments.length);
+        };
+}
+replay=function(dataString)
+{
+        //myPath.add(new paper.Point(0,0));
+	var myData=JSON.parse(dataString);
+	var startTime=myData.startTime;
+	var endTime=myData.endTime;
+	for(var i=0;i<myData.paths.length;i++)
+	{
+		var pathJSON=myData.paths[i];
+
+        	myPath=new paper.Path();
+	        myPath.strokeColor=pathJSON.color;
+		myPath.strokeWidth=6;
+        	
+		setTimeout(drawNext(myPath,new paper.Point(pathJSON.points[0].x,pathJSON.points[0].y)),pathJSON.startTime-startTime);
+//		alert("myPath:"+myPath.segments.length);
+//		alert("myPath:"+myPath.strokeColor);
+//alert(pathJSON.points[0].x);
+		var pathTime=(pathJSON.endTime-pathJSON.startTime)/pathJSON.points.length;
+		for(var j=0;j<pathJSON.points.length;j++)
+		{
+			x=pathJSON.points[j].x;
+			y=pathJSON.points[j].y;
+        		setTimeout(drawNext(myPath,new paper.Point(x,y)),pathTime);
+		}
+	}
+}
+
+
+
    globals.resize = function(width,height){
       oldWidth=paper.view.viewSize.width;
       oldHeight=paper.view.viewSize.height;
@@ -133,9 +204,22 @@ else{
       }
       paper.view.draw();
    }
-
-
-   //globals.resize(400,400);
-   
+function deepCopy(obj) {
+    if (Object.prototype.toString.call(obj) === '[object Array]') {
+        var out = [], i = 0, len = obj.length;
+        for ( ; i < len; i++ ) {
+            out[i] = arguments.callee(obj[i]);
+        }
+        return out;
+    }
+    if (typeof obj === 'object') {
+        var out = {}, i;
+        for ( i in obj ) {
+            out[i] = arguments.callee(obj[i]);
+        }
+        return out;
+    }
+    return obj;
+}
 
 });
