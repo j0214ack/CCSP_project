@@ -6,4 +6,5 @@ class Courselist < ActiveRecord::Base
   has_many :userlists, :through=> :describerlists
   has_many :coursecontents
   store :slideorder, coder: JSON
+  store :teachorder, coder: JSON
 end

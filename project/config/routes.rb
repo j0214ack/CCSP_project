@@ -85,15 +85,12 @@ Project::Application.routes.draw do
     get    '/record/data/:filename.(:format)'     => "course#playrecord",:as=>"course"
     get    '/download'                  => "course#download", :as=>"course"
     get    '/showUserDescribedCourse'   => "course#showUserDescribedCourse",:as=>"course" 
-<<<<<<< HEAD
     get    '/newCourse'                 => "course#newCourse", :as =>"course"
     post   '/newCourse'                 => "course#createCourse", :as =>"course"
     post   '/sendjson'                  => "slide#sendingjson",      :as =>"slide"
     post   '/sendrequest'               => "slide#sendrequest", :as =>"slide" 
-=======
     get    '/home/newCourse'   => "course#newCourse"
     post    '/home/createCourse'   => "course#createCourse"
->>>>>>> f4854fbc7e08a40b5bc36e65a58fe06b3cacec43
   end
   #resources :user
   resources :courselist

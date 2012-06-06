@@ -77,13 +77,14 @@ class CourseController < ApplicationController
          #flash[:notice] = "File has been deleted successfully"
   end
   def recordpage
-      @course=Coursecontent.all
+      
   end
   def record
       name = params[:filename]
       format = params[:format]
-      filename = name+"."+format
+      filename = Digest::MD5.hexdigest(Time.now.to_s).encode("utf-8")+"."+format
       post = Coursecontent.saverecord(request.body,filename)
+      
       render :action=>:recordpage
   end
   
