@@ -50,14 +50,18 @@
       <div id="thumb_con">
          <div class="all thumbs active">
             <ul class="thumbs">
+            <h2>All</h2>
+            <% @courses.each do |c| %>
                   <li>
                      <div class="lecture-info">
-                        all
-                        <div class="lecture-thumb">pic</div>
-                        <span class="lecture-title">title</span>
-                        <p class="lecture-description">description</p>
+                     <a href="/course/<%=c.id%>">
+                        <img src="<%=c.slideorder["thumb0"]%>">
+                        <h3 class="lecture-title"><%=c.coursename%></h3>
+                        <p class="lecture-description"><%=c.description%></p>
+                     </a>
                      </div>
                   </li>
+            <% end %>
             </ul>
          </div>
          <div class="pop thumbs">

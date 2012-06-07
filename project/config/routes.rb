@@ -82,6 +82,7 @@ Project::Application.routes.draw do
     get    '/record'                    => "course#recordpage",:as=>"course"
     post   '/record/:filename.(:format)'          => "course#record", :as => "course"
     get    '/record/data/:filename.(:format)'     => "course#playrecord",:as=>"course"
+    post   '/data/:filename.(:format)'     => "course#playrecord",:as=>"course"
     get    '/download'                  => "course#download", :as=>"course"
     get    '/showUserDescribedCourse'   => "course#showUserDescribedCourse",:as=>"course" 
     get    '/newCourse'                 => "course#newCourse", :as =>"course"

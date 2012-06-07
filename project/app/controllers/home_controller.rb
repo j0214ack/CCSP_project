@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @courses = Courselist.all
     render :layout => 'home'
   end
   def slide

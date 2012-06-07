@@ -98,6 +98,26 @@ nav span.tag.active{
 #thumb_con{
 }
 
+div.lecture-info img{
+   width: 200px;
+   height: 150px;
+}
+
+div.lecture-info h3{
+   float: right;
+}
+
+div.lecture-info span{
+   float: right;
+}
+
+.thumbs li{
+   width: 400px;
+   float: left;
+   display: inline-box;
+   margin: 30px;
+}
+
 ul.categories{
 	margin-bottom: 20px;
 }
