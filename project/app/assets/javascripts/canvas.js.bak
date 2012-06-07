@@ -1,9 +1,11 @@
 $(function(){
-
-window.globals = {};
+window.globals={};
 var canvas = document.getElementById('slide');
-// Create a Paper.js Path to draw a line into it:
 paper.setup(canvas);
+   var playBtn = $("#playBtn");
+   var playStatus = false;
+   var record;
+
 var path = new paper.Path();
 var myTool=new paper.Tool();
 myTool.activate();
@@ -18,23 +20,24 @@ var hitOptions = {
 var toDelete=null;
 var data={
 	startTime:null,
-	pathJSONs:[], // paper.Path(s)
+	paths:[], // n * {color,startT,[{x,y},{x,y}..],.endT}
 	endTime:null
 }; 
-startRecording(); // temporary
+//startRecording(); // temporary
 function startRecording()
 {
-
+console.log("startRecording is called!");
 var pathJSON=null;
 myTool.onMouseDown=function (event) {	
 if(currentTool.type=="pencil")
 {
 	pathJSON={
+		color:null,
 		startTime:null,
 		endTime:null,
-		path:null 
+		points:[] // x,y
 	};
-	//pathJSON.color=currentTool.color
+	pathJSON.color=currentTool.color
 	pathJSON.startTime=new Date().getTime();
     // If we produced a path before, deselect it:
     if (path) {
@@ -84,6 +87,7 @@ else{
 myTool.onMouseDrag=function (event) {
 if(currentTool.type=="pencil"){
     path.add(event.point);
+    //pathJSON.points.push({x:event.point.x , y:event.point.y});
 }
 else{
 }
@@ -95,13 +99,13 @@ if(currentTool.type=="pencil"){
 	var segmentCount = path.segments.length;
 	path.simplify(10);
 	
-//	for(var i=0;i<path.segments.length;i++)
-//	{
-		//var pt=path.segments[i].point;
-		//pathJSON.points.push({x:pt.x , y:pt.y});
-//	}
+	for(var i=0;i<path.segments.length;i++)
+	{
+		var pt=path.segments[i].point;
+		pathJSON.points.push({x:pt.x , y:pt.y});
+	}
 	pathJSON.endTime=new Date().getTime();
-	data.pathJSONs.push(deepCopy(pathJSON));
+	data.paths.push(deepCopy(pathJSON));
 //endRecording();
 //alert(JSON.stringify(data));
 }
@@ -115,9 +119,9 @@ else{
 data.startTime=new Date().getTime();
 
 }// end startRecording
-
-endRecording=function()
+var endRecording=function()
 {
+   console.log("endRecording is called!");
 	data.endTime=new Date().getTime();
 
 	myTool.onMouseDown=null;
@@ -127,39 +131,39 @@ endRecording=function()
 return data;
 }
 
-function drawNext(thePath)
+function drawNext(thePath,point)
 {
         return function(){
-                thePath.clone();
-                paper.view.draw();
+                thePath.add(point);
         };
 }
-replay=function(dataString)
+var myPath=new paper.Path();
+var replay=function(dataString)
 {
-        //myPath.add(new paper.Point(0,0));
+   console.log("replay is called!");
 	var myData=JSON.parse(dataString);
-	var startTime=myData.startTime;
+   console.log(myData);
+   var startTime=myData.startTime;
 	var endTime=myData.endTime;
-	for(var i=0;i<myData.pathJSONs.length;i++)
+	for(var i=0;i<myData.paths.length;i++)
 	{
-		var pathJSON=myData.pathJSONs[i];
+		var pathJSON=myData.paths[i];
 
-//        	myPath=new paper.Path();
-//	        myPath.strokeColor=pathJSON.color;
-//		myPath.strokeWidth=6;
-        	
-		setTimeout(drawNext(pathJSON.path),pathJSON.startTime-(i>=1?myData.pathJSONs[i-1]:startTime));
-//		alert("myPath:"+myPath.segments.length);
-//		alert("myPath:"+myPath.strokeColor);
+        	myPath=new paper.Path();
+         pathArray.push(myPath);
+	        myPath.strokeColor=pathJSON.color;
+		myPath.strokeWidth=6;
+		setTimeout(drawNext(myPath,new paper.Point(pathJSON.points[0].x,pathJSON.points[0].y)),pathJSON.startTime-startTime);
 //alert(pathJSON.points[0].x);
 		var pathTime=(pathJSON.endTime-pathJSON.startTime)/pathJSON.points.length;
-		/*for(var j=0;j<pathJSON.points.length;j++)
+		for(var j=0;j<pathJSON.points.length;j++)
 		{
 			x=pathJSON.points[j].x;
 			y=pathJSON.points[j].y;
         		setTimeout(drawNext(myPath,new paper.Point(x,y)),pathTime);
-		}*/
+		}
 	}
+         paper.view.draw();
 }
 
 
@@ -218,5 +222,19 @@ function deepCopy(obj) {
     }
     return obj;
 }
+   playBtn.click(function(){
+      if (playStatus == false){
+        playStatus = true;
+        startRecording();
+      }
+      else{
+         playStatus = false;
+         record = endRecording();
+       }
+   });
+   nextBtn = $("#nextBtn");
+   nextBtn.click(function(){
+      replay(JSON.stringify(record));
+   });
 
 });
