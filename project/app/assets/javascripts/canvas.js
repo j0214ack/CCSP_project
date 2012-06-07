@@ -1,4 +1,8 @@
 $(function(){
+var playBtn = $("#playBtn");
+var playStatus = false;
+var record;
+
 
 window.globals = {};
 var canvas = document.getElementById('slide');
@@ -219,5 +223,19 @@ function deepCopy(obj) {
     }
     return obj;
 }
+   playBtn.click(function(){
+      if (playStatus == false){
+        playStatus = true;
+        startRecording();
+      }
+      else{
+         playStatus = false;
+         record = endRecording();
+       }
+   });
+   nextBtn = $("#nextBtn");
+   nextBtn.click(function(){
+      replay(JSON.stringify(record));
+   });
 
 });
